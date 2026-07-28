@@ -321,7 +321,5 @@
             return "### TELEWORK / HYBRID SCAN\nFound " + dt.m.length + " matching jobs out of " + dt.tot + " scanned.\n\n" + 
             dt.m.map((m, i) => `**${i + 1}. ${m.ti}**\n**Link:** ${m.ln}\n**Details:** ${m.me}\n**Policy:**\n> "...${m.s}..."`).join("\n\n---\n\n");
         });
-    } else {
-        alert("Abort: No supported data structures detected on page.");
     }
 })();
