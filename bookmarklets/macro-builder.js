@@ -17,18 +17,25 @@
         }
 
         init() {
-            const cssText =
-                'position:fixed;top:15px;right:15px;z-index:2147483647;font-family:system-ui,sans-serif';
-            const { h, s } = BookmarkletUtils.createShadowRoot(null, cssText);
+            const { h, s } = BookmarkletUtils.createShadowRoot(null);
+            h.className = 'mb-runtime-host';
             this.h = h;
             this.s = s;
             this.render();
         }
 
         render() {
+            if (!document.getElementById('mb-light-dom-styles')) {
+                const lightDomStyles = document.createElement('style');
+                lightDomStyles.id = 'mb-light-dom-styles';
+                lightDomStyles.innerHTML = '.mb-highlight-box{position:absolute;border:2px solid #a855f7;background:rgba(168,85,247,0.2);pointer-events:none;z-index:999999;transition:all 0.15s ease;border-radius:4px;box-shadow:0 0 0 2px rgba(168,85,247,0.4)} .mb-hidden{display:none!important}';
+                document.head.appendChild(lightDomStyles);
+            }
+
             this.s.innerHTML =
                 '<style>' +
-                ':host{all:initial;font-family:system-ui,sans-serif;--mb-bg:#1e293b;--mb-bg-alt:#0f172a;--mb-border:#334155;--mb-primary:#4f46e5;--mb-primary-hover:#4338ca;--mb-text:#f8fafc;--mb-text-muted:#64748b;--mb-text-sub:#cbd5e1;--mb-success:#059669;--mb-success-hover:#047857;--mb-danger:#ef4444;--mb-danger-hover:#dc2626;--mb-highlight:#3b82f6;--mb-ring:rgba(59,130,246,0.4);--mb-shadow:0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);--mb-radius-xl:16px;--mb-radius-md:8px;}' +
+                ':host(.mb-runtime-host){position:fixed;top:15px;right:15px;z-index:2147483647;font-family:system-ui,sans-serif}' +
+                ':host{all:initial;font-family:system-ui,sans-serif;--mb-bg:#1e293b;--mb-bg-alt:#0f172a;--mb-border:#334155;--mb-primary:#4f46e5;--mb-primary-hover:#4338ca;--mb-text:#f8fafc;--mb-text-muted:#64748b;--mb-text-sub:#cbd5e1;--mb-success:#059669;--mb-success-hover:#047857;--mb-danger:#ef4444;--mb-danger-hover:#dc2626;--mb-highlight:#3b82f6;--mb-ring:rgba(59,130,246,0.4);--mb-shadow:0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);--mb-radius-xl:16px;--mb-radius-md:8px;--mb-highlight-box-border:#a855f7;--mb-highlight-box-bg:rgba(168,85,247,0.2);--mb-highlight-box-shadow:rgba(168,85,247,0.4);}' +
                 '.box{background:var(--mb-bg);color:var(--mb-text);width:320px;padding:20px;border-radius:var(--mb-radius-xl);box-shadow:var(--mb-shadow);border:1px solid var(--mb-border);font-size:13px;box-sizing:border-box}' +
                 '.row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;cursor:move;user-select:none;padding-bottom:8px;border-bottom:1px solid var(--mb-border)}' +
                 'h3,b{margin:0;color:var(--mb-text);font-size:15px;font-weight:700}' +
@@ -39,6 +46,7 @@
                 'button.alt{background:var(--mb-bg);border:1px solid var(--mb-primary)}' +
                 'input{width:100%;background:var(--mb-bg);color:var(--mb-text);border:1px solid var(--mb-border);padding:10px;border-radius:6px;box-sizing:border-box;margin-top:5px;outline:none;transition:all 0.3s ease}' +
                 'input:focus{border-color:var(--mb-highlight)}' +
+                ':host(.hidden){display:none!important}' +
                 '.hidden{display:none!important}' +
                 '.list{max-height:220px;overflow-y:auto;margin:15px 0;background:var(--mb-bg);border-radius:6px;padding:8px;border:1px solid var(--mb-border);display:flex;flex-direction:column;gap:8px}' +
                 '.step{background:var(--mb-bg-alt);padding:10px;border-radius:6px;border:1px solid var(--mb-border);display:flex;flex-direction:column;gap:8px;transition:all 0.3s ease}' +
@@ -176,25 +184,24 @@
         }
 
         pick(mode) {
-            this.h.style.display = 'none';
+            this.h.classList.add('hidden');
             const hl = document.createElement('div');
-            hl.style.cssText =
-                'position:absolute;border:2px solid #a855f7;background:rgba(168,85,247,0.2);pointer-events:none;z-index:999999;transition:all 0.15s ease;border-radius:4px;box-shadow:0 0 0 2px rgba(168,85,247,0.4)';
+            hl.className = 'mb-highlight-box';
             document.body.appendChild(hl);
 
 
             const mv = (e) => {
                 if (e.shiftKey) {
-                    hl.style.display = 'none';
+                    hl.classList.add('mb-hidden');
                     return;
                 }
                 const t = BookmarkletUtils.getTarget(e);
                 if (!t) {
-                    hl.style.display = 'none';
+                    hl.classList.add('mb-hidden');
                     return;
                 }
 
-                hl.style.display = 'block';
+                hl.classList.remove('mb-hidden');
                 const r = t.getBoundingClientRect();
                 hl.style.top = r.top + window.scrollY + 'px';
                 hl.style.left = r.left + window.scrollX + 'px';
@@ -223,7 +230,7 @@
                 const txt = targetEl.innerText ? targetEl.innerText.substring(0, 20).trim() : '';
 
                 hl.remove();
-                this.h.style.display = 'block';
+                this.h.classList.remove('hidden');
                 this.q('#prev_tag').innerText = targetEl.tagName;
                 this.q('#prev_sel').innerText = sel;
                 this.q('#preview').classList.remove('hidden');
@@ -288,7 +295,7 @@
 
                 this.q('#prev_no').onclick = () => {
                     this.q('#preview').classList.add('hidden');
-                    this.h.style.display = 'none';
+                    this.h.classList.add('hidden');
                     document.body.appendChild(hl);
                 };
             };
@@ -376,9 +383,9 @@
                     init(){
                         this.h = document.createElement('div');
                         this.h.id = this.id;
-                        this.h.style.cssText = 'position:fixed;top:15px;right:15px;z-index:2147483647;font-family:system-ui,sans-serif';
+                        this.h.className = 'mb-runtime-host';
                         this.s = this.h.attachShadow({mode:'open'});
-                        this.s.innerHTML = '<style>:host{all:initial;font-family:system-ui,sans-serif}.box{background:var(--mb-bg, #1e293b);color:var(--mb-text, #f8fafc);width:240px;padding:16px;border-radius:16px;box-shadow:0 25px 50px -12px rgba(0, 0, 0, 0.5);border:1px solid #4338ca;font-size:13px}.row{display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;padding-bottom:5px;border-bottom:1px solid #334155;margin-bottom:10px}.timer{font-size:32px;text-align:center;color:#a5b4fc;margin:10px 0;font-family:monospace}button{width:100%;background:#ef4444;color:#fff;border:none;padding:8px;border-radius:8px;cursor:pointer;transition:all 0.3s ease-in-out}button:hover{transform:translateY(-1px);box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1)}button:active{transform:scale(0.95)}.btn-close{background:transparent;border:none;color:#e2e8f0;font-size:14px;cursor:pointer;padding:0;width:auto;margin:0;box-shadow:none;transform:none}.status-text{text-align:center;color:#c7d2fe;font-size:11px}</style><div class="box"><div class="row" id="drag"><b>RUNNING</b><button id="x" aria-label="Close Macro Runtime" class="btn-close">✕</button></div><div class="status-text" id="st">Initializing...</div><div class="timer" id="tm">00:00</div><button id="cn" aria-label="Stop Macro">Stop</button></div>';
+                        this.s.innerHTML = '<style>:host{all:initial;font-family:system-ui,sans-serif}:host(.mb-runtime-host){position:fixed;top:15px;right:15px;z-index:2147483647;font-family:system-ui,sans-serif;--mb-bg:#1e293b;--mb-text:#f8fafc;--mb-border:#334155;--mb-primary:#4338ca;--mb-danger:#ef4444;}.box{background:var(--mb-bg);color:var(--mb-text);width:240px;padding:16px;border-radius:16px;box-shadow:0 25px 50px -12px rgba(0, 0, 0, 0.5);border:1px solid var(--mb-primary);font-size:13px}.row{display:flex;justify-content:space-between;align-items:center;cursor:move;user-select:none;padding-bottom:5px;border-bottom:1px solid var(--mb-border);margin-bottom:10px}.timer{font-size:32px;text-align:center;color:#a5b4fc;margin:10px 0;font-family:monospace}button{width:100%;background:var(--mb-danger);color:#fff;border:none;padding:8px;border-radius:8px;cursor:pointer;transition:all 0.3s ease-in-out}button:hover{transform:translateY(-1px);box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1)}button:active{transform:scale(0.95)}.btn-close{background:transparent;border:none;color:#e2e8f0;font-size:14px;cursor:pointer;padding:0;width:auto;margin:0;box-shadow:none;transform:none}.status-text{text-align:center;color:#c7d2fe;font-size:11px}.error-text{color:var(--mb-danger)}</style><div class="box"><div class="row" id="drag"><b>RUNNING</b><button id="x" aria-label="Close Macro Runtime" class="btn-close">✕</button></div><div class="status-text" id="st">Initializing...</div><div class="timer" id="tm">00:00</div><button id="cn" aria-label="Stop Macro">Stop</button></div>';
                         this.q = s => this.s.querySelector(s);
                         this.q('#x').onclick = () => this.destroy();
                         this.q('#cn').onclick = () => this.destroy();
@@ -471,7 +478,7 @@
                                 if(!el) {
                                     const err = { step: i+1, action: j+1, sel: action.sel, url: window.location.href };
                                     this.q('#st').innerText = 'Error: Step '+(i+1)+' Sub-action '+(j+1)+' Failed';
-                                    this.q('#st').style.color = '#ef4444';
+                                    this.q('#st').classList.add('error-text');
                                     return;
                                 }
 
@@ -508,7 +515,7 @@
             const area = this.q('#out');
             const link = this.q('#lnk');
             link.href = href;
-            area.style.display = 'block';
+            area.classList.remove('hidden');
         }
 
         destroy() {

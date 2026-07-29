@@ -19,9 +19,9 @@
 - [ ] 🏗️ `bookmarklets/web-clipper.js`: 689 lines. Requires domain splitting and colocation.
 
 ## 🎨 Rigid Presentation States ([UI / STYLIZE])
-- [ ] 🎨 `bookmarklets/job-clipper.js`: Rigid inline CSS and hardcoded hex codes. Requires extraction to design tokens.
+- [x] 🎨 `bookmarklets/job-clipper.js`: Rigid inline CSS and hardcoded hex codes. Requires extraction to design tokens.
 - [ ] 🎨 `bookmarklets/pa-county-finder.js`: Hardcoded hex codes and rigid inline CSS styles within template literals. Requires UI modernization and tokenization.
-- [ ] 🎨 `bookmarklets/macro-builder.js`: Extensive inline style attributes polluting structural HTML strings. Needs decoupled CSS classes.
+- [x] 🎨 `bookmarklets/macro-builder.js`: Extensive inline style attributes polluting structural HTML strings. Needs decoupled CSS classes.
 
 ## 🧹 Semantic Dust & Hygiene ([AST / REMOVE])
 - [x] 🧹 `bookmarklets/macro-builder.js`: Unreferenced diagnostic droppings and dynamic console wrappers. Requires excision.
