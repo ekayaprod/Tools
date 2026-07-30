@@ -76,7 +76,8 @@ function _decodeQuotedPrintable(str, charset = 'utf-8') {
         if (encoding === 'us-ascii') encoding = 'utf-8';
 
         return new TextDecoder(encoding, { fatal: false }).decode(bytes);
-    } catch {
+    } catch (e) {
+        console.warn('MIME header decode failed:', e);
         return decoded;
     }
 }
@@ -108,7 +109,8 @@ function _stripHtml(html) {
             const junk = doc.querySelectorAll('style, script, link, meta, title');
             junk.forEach(el => el.remove());
             text = doc.body ? doc.body.textContent : (doc.documentElement.textContent || '');
-        } catch {
+        } catch (e) {
+            console.warn('HTML strip fallback:', e);
             text = text.replace(/<[^>]+>/g, '');
         }
     } else {
@@ -137,7 +139,8 @@ function dataViewToString(view, encoding) {
             let decoded = new TextDecoder('utf-8', { fatal: true }).decode(view);
             const nullIdx = decoded.indexOf('\0');
             return nullIdx !== -1 ? decoded.substring(0, nullIdx) : decoded;
-        } catch {
+        } catch (e) {
+            console.warn('UTF-8 decode failed, falling back to ascii:', e);
             return dataViewToString(view, 'ascii');
         }
     }
@@ -148,7 +151,8 @@ function dataViewToString(view, encoding) {
             let decoded = getTextDecoder('utf-16le').decode(view);
             const nullIdx = decoded.indexOf('\0');
             return nullIdx !== -1 ? decoded.substring(0, nullIdx) : decoded;
-        } catch {
+        } catch (e) {
+            console.warn('UTF-16LE decode failed, falling back to manual decode:', e);
             let result = '';
             for (let i = 0; i < view.byteLength - 1; i += 2) {
                 let charCode = view.getUint16(i, true);
@@ -163,7 +167,8 @@ function dataViewToString(view, encoding) {
         let decoded = getTextDecoder('windows-1252').decode(view);
         const nullIdx = decoded.indexOf('\0');
         return nullIdx !== -1 ? decoded.substring(0, nullIdx) : decoded;
-    } catch {
+    } catch (e) {
+        console.warn('Windows-1252 decode failed, falling back to manual decode:', e);
         let result = '';
         for (let i = 0; i < view.byteLength; i++) {
             let charCode = view.getUint8(i);
@@ -180,7 +185,7 @@ function filetimeToDate(low, high) {
         const FILETIME_EPOCH_DIFF = 116444736000000000n;
         let filetime = (BigInt(high) << 32n) | BigInt(low);
         return new Date(Number((filetime - FILETIME_EPOCH_DIFF) / 10000n));
-    } catch { return null; }
+    } catch (e) { console.warn('Date parsing failed:', e); return null; }
 }
 
 /* =============================================================================
@@ -197,7 +202,7 @@ function _parsePropTag(entryName) {
     }
     try {
         return { id: parseInt(propTagStr.substring(0, 4), 16), type: parseInt(propTagStr.substring(4, 8), 16) };
-    } catch { return null; }
+    } catch (e) { console.warn('PropTag parsing failed:', e); return null; }
 }
 
 function _shouldStoreProperty(propId, newPropType, existingProp) {
@@ -271,9 +276,10 @@ MsgReaderParser.prototype.parseMime = function() {
     this._mimeScanCache = null;
     let rawText;
     try { rawText = new TextDecoder('utf-8', { fatal: false }).decode(this.dataView); }
-    catch {
+    catch (e) {
+        console.warn('UTF-8 decode failed:', e);
         try { rawText = new TextDecoder('latin1').decode(this.dataView); }
-        catch { rawText = ''; }
+        catch (e2) { console.warn('Latin1 decode failed:', e2); rawText = ''; }
     }
 
     let mimeData = this._scanBufferForMimeText(rawText);
@@ -505,9 +511,11 @@ MsgReaderParser.prototype._scanBufferForMimeText = function(rawText) {
 
     if (!rawText) {
         try { rawText = new TextDecoder('utf-8', { fatal: false }).decode(this.dataView); }
-        catch {
+        catch (e) {
+            console.warn('UTF-8 decode failed:', e);
             try { rawText = new TextDecoder('latin1').decode(this.dataView); }
-            catch {
+            catch (e2) {
+                console.warn('Latin1 decode failed:', e2);
                 return { subject: null, to: null, cc: null, body: null };
             }
         }
@@ -681,8 +689,8 @@ MsgReaderParser.prototype.convertPropertyValue = function(data, type, propId) {
 
     if (isBodyProp || type === PROP_TYPE_STRING || type === PROP_TYPE_STRING8) {
         let u16 = '', u8 = '';
-        try { u16 = dataViewToString(view, 'utf16le'); } catch { /* fallback to empty string */ }
-        try { u8 = dataViewToString(view, 'utf-8'); } catch { /* fallback to empty string */ }
+        try { u16 = dataViewToString(view, 'utf16le'); } catch (e) { console.warn('UTF-16LE decode failed:', e); /* fallback to empty string */ }
+        try { u8 = dataViewToString(view, 'utf-8'); } catch (e) { console.warn('UTF-8 decode failed:', e); /* fallback to empty string */ }
 
         // WARN: We use a 70% printable character heuristic to guess whether the raw data is UTF-8 or UTF-16LE.
         // OLE properties often lack explicit encoding markers. If a string decodes as garbage in UTF-8

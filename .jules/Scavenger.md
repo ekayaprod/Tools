@@ -9,3 +9,7 @@
 **Category:** Diagnostic Droppings
 **Targets Removed:**
 - Excision of `_log` helper and native `console.log` wrappers in `bookmarklets/macro-builder.js` and `bookmarklets/utils.js` (including docstring examples).
+**Category:** Bare Catch Blocks
+**Targets Removed:**
+- `catch {` replaced with `catch (e) {` and error context logged in `bookmarklets/property-clipper.js`
+- `catch {` replaced with `catch (e) {` and error context logged in `mailto-link-generator/js/msgreader.js`

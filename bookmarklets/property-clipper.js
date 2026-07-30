@@ -303,8 +303,8 @@
                     try {
                         this.parseDetails(pd, data);
                         return; // Prioritize Next.js data
-                    } catch {
-                        // Suppressed due to Diagnostic Dropping extraction
+                    } catch (e) {
+                        console.warn('Property Details Extraction Failed (NextData):', e);
                     }
                 }
             }
@@ -314,8 +314,8 @@
                 if (pd) {
                     try {
                         this.parseDetails(pd, data);
-                    } catch {
-                        // Suppressed due to Diagnostic Dropping extraction
+                    } catch (e) {
+                        console.warn('Property Details Extraction Failed (RawPre):', e);
                     }
                 }
             }
