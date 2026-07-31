@@ -28,5 +28,5 @@
 - [x] 🧹 `bookmarklets/utils.js`: Diagnostic droppings and console examples inside code. Requires excision or documentation cleanup.
 
 ## 🛡️ Resilience & Security Boundaries ([Security / HARDEN])
-- [ ] 🛡️ `mailto-link-generator/js/msgreader.js`: Bare catch blocks (`catch {`) discarding error context. Requires explicit error handling.
-- [ ] 🛡️ `bookmarklets/property-clipper.js`: Bare catch blocks (`catch {`) discarding error context. Requires explicit error handling.
+- [x] 🛡️ `mailto-link-generator/js/msgreader.js`: Bare catch blocks (`catch {`) discarding error context. Requires explicit error handling.
+- [x] 🛡️ `bookmarklets/property-clipper.js`: Bare catch blocks (`catch {`) discarding error context. Requires explicit error handling.
