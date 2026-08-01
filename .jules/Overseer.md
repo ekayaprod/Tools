@@ -20,3 +20,23 @@
 
 **Action Taken:**
 Appended structural decay targets to `.jules/agent_tasks.md` maintaining historical resolutions and governing rules.
+
+## Unhandled Targets (Overflow Queue)
+
+**Structural Monoliths:**
+- tests/test-property-clipper.js
+- bookmarklets/quick-clicker.js
+- tests/test-utils.js
+
+**Semantic Dust:**
+- bookmarklets/utils.js:296 (Fossilized debris)
+- bookmarklets/utils.js:646 (Fossilized debris)
+
+**Rigid Presentation States:**
+- bookmarklets/job-clipper.js:40 (Hardcoded Hex #d946ef)
+- bookmarklets/job-clipper.js:41 (Hardcoded Hex #c026d3)
+
+**Diagnostic Droppings:**
+- bookmarklets/property-clipper.js:266 (console.warn)
+- bookmarklets/property-clipper.js:286 (console.warn)
+- bookmarklets/property-clipper.js:307 (console.warn)
