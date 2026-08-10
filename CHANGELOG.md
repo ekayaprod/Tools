@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### New
+- 📐 Prompt Engineer: Evolved architecture and structural contracts with polarity inversion.
 - ⚙️ Prompt Engineer: Evolved AI instruction protocols and cognitive boundaries.
 - 📝 Scribe/Retcon: Expanded localized README with detailed architecture and tool descriptions.
 - 🏗️ Architect: Refactored Web Clipper to class-based architecture for better maintainability.
@@ -17,10 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🎨 Virtuoso: General UI/UX updates.
 
 ### Fixed
+- 🛡️ Security: Fixed XSS vulnerability in job-clipper.js.
+- 🛡️ Security: Fixed bare catch blocks in property-clipper and msgreader.
 - 🛡️ Warden: Added comprehensive resilience tests for Web Clipper and TSConfig.
 - 🐛 Fix: Resolved Job Clipper UI test failure by aligning with user instructions.
 
 ### Cleanups & Maintenance
+- 🎨 Palette+: Refactored rigid presentation states in UI components and extracted inline styles to CSS classes.
 - 🎨 Palette+: Injected fluid motion, focus rings, and soft borders into UI components.
 - 👁️ Overseer: Categorized structural decay and updated agent triages.
 - 🪲 Scavenger: Executed aggressive codebase sweep to remove diagnostic droppings, orphaned entities, and dead logic.

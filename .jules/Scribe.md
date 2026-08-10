@@ -1,4 +1,21 @@
 ## Scribe — The Code Illuminator
+**Action:** Chronicle Property Clipper and MsgReader & Aggregate Changelog
+**Rules Applied:** AST-compliant JSDoc injection with `git blame` historical intent anchoring.
+**Files Modified:** `bookmarklets/property-clipper.js`, `mailto-link-generator/js/msgreader.js`
+**Aggregated Commits (CHANGELOG):**
+- `0da301f` Merge pull request #496 from ekayaprod/prompt-engineer-structural-contracts-13350378904470872002
+- `c98d576` 📐 Prompt Engineer: Architecture & Structural Contracts
+- `3d182f3` Overseer: Triage and Board Initialization
+- `403367a` docs(jules): superintendent task complete for lockfile sync
+- `6f4f459` chore: fix bare catch blocks in property-clipper and msgreader
+- `3524b02` 🎨 Palette+: Refactored rigid presentation states in UI components
+- `50907a0` 🪲 Scavenger: Excise Diagnostic Droppings
+- `4222f46` Transmute Prompts - Polarity Inversion & Structural Hardening
+- `c79d167` 🛡️ Palette+: Fix XSS vulnerability in job-clipper.js
+- `a047ce7` 🦴 Scavenger: Excise Diagnostic Droppings
+- `36d1af1` ⚙️ Prompt Engineer: Evolve Job Clipper Payloads
+- `8b5f605` refactor(macro-builder): extract inline styles to CSS classes
+## Scribe — The Code Illuminator
 **Action:** Chronicle Passphrase Generator and Aggregate Changelog
 **Rules Applied:** AST-compliant JSDoc injection with `git blame` historical intent anchoring.
 **Files Modified:** `bookmarklets/passphrase-generator.js`, `bookmarklets/job-clipper.js`

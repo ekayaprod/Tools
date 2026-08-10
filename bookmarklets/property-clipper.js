@@ -645,6 +645,11 @@
             const descLines = doc.splitTextToSize(description, contentWidth);
             doc.text(descLines, margin, y, { lineHeightFactor: 1.5 });
 
+            /**
+             * * Historical Intent: Introduced via PR #496 (0da301f)
+             * * Execution Context: Standard conversion factor for PDF text measurement.
+             * * Calculates vertical spacing height by converting points to millimeters.
+             */
             const descHeight = descLines.length * 10 * 1.5 * 0.3527777778;
             y += descHeight + 15;
             return y;
