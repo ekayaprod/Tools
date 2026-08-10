@@ -523,6 +523,11 @@ MsgReaderParser.prototype._scanBufferForMimeText = function(rawText) {
 
     let result = { subject: null, to: null, cc: null, body: null };
 
+    /**
+     * * Historical Intent: Introduced via PR #496 (0da301f)
+     * * Execution Context: Extracts email metadata fields dynamically.
+     * * Creates a RegExp to anchor strictly to header boundaries (e.g., 'To: ') and captures everything until the newline, ignoring structural noise in malformed `.msg` files.
+     */
     const findField = (name) => {
         const search = new RegExp(`\\b${name}:\\s*([^\\r\\n]+)`, 'i');
         const match = rawText.match(search);
