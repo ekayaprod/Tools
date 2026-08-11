@@ -1,12 +1,16 @@
-## Component Design Decision Manifest
+# Design Decision Ledger
 
-**Components Swept:**
-- `bookmarklets/job-clipper.js`
-- `bookmarklets/macro-builder.js`
+**bookmarklets/quick-clicker.js**
+- Abstracted hardcoded close button styles, text color overrides, danger background overrides into standard scoped classes (`.qc-close-btn`, `.qc-label`, `.qc-btn-danger`).
+- Added interaction polish on `.qc-close-btn:hover` and `.qc-btn-danger:hover` to meet Palette+ target guidelines.
+- Standardized checkbox flex wrappers to `.qc-checkbox-wrapper` to avoid inline text margins.
 
-**The Hover State Interpolation (Signature) / Brushstrokes & UX Patterns Applied:**
-1. **The Hardcoded Hex Extradition:**
-   - In `job-clipper.js`: Extracted hardcoded `#fff` into `--jc-white: #ffffff` and unified all active states and background declarations with canonical design tokens across the host layout.
+**bookmarklets/delayed-clicker.js**
+- Abstracted center-alignment, negative margins, and hardcoded success colors (`#4ade80`) into tokenized CSS classes (`.dc-label-center`, `.dc-btn-cancel`, `.dc-success-text`).
+- Prevented HTML component littering with inline `style="text-align:center"`.
 
-2. **The Rigid State / The Lifeless Transition:**
-   - In `macro-builder.js`: Eliminated rigid `.style.cssText` JavaScript manipulation across layout nodes, decoupling presentation and structural DOM. Injected missing visual tokens to represent hidden DOM logic using explicit class orchestrations (`.mb-hidden`, `.hidden`) to prevent unrefined, jarring binary UI transitions and to support future orchestrated motion patterns. Fixed Shadow DOM containment scope issues with class `.mb-runtime-host` targeting (`:host(.mb-runtime-host)`). Addressed critical UX gaps on the `.mb-highlight-box` hover logic in the Light DOM.
+**bookmarklets/property-clipper.js**
+- Abstracted header layouts into `.pc-header-left`.
+- Converted structural `.hero-section` inline padding and border configurations into `.pc-hero-section`.
+- Abstracted spinner alignment logic out of raw HTML strings into `.pc-spinner-wrapper`.
+- Added canonical border variable usage (`var(--pc-border)`).
