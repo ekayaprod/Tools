@@ -367,7 +367,7 @@ const ActivityModal = ({ activity, onClose }) => {
               </div>
               
               <div>
-                <h4 className="text-sm uppercase tracking-wider font-bold text-gray-400 mb-2">Why It's Worth It</h4>
+                <h4 className="text-sm uppercase tracking-wider font-bold text-gray-400 mb-2">Why It&apos;s Worth It</h4>
                 <p className="text-gray-700">{activity.worthTheTravel}</p>
               </div>
             </div>
@@ -473,7 +473,7 @@ export default function App() {
         
         {/* Filter Categories Bar */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
-          <div className="flex overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 hide-scrollbar gap-2">
+          <div className="flex overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 gap-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {categories.map(category => (
               <button
                 key={category}
@@ -510,7 +510,7 @@ export default function App() {
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">No activities found</h3>
             <p className="text-gray-500 max-w-sm mx-auto">
-              We couldn't find anything matching "{searchTerm}" in the selected category. Try adjusting your search or filters.
+              We couldn&apos;t find anything matching &quot;{searchTerm}&quot; in the selected category. Try adjusting your search or filters.
             </p>
             <button 
               onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
@@ -532,14 +532,8 @@ export default function App() {
       
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-8 text-center text-gray-500 text-sm mt-auto">
-        <p>London Toddler Activities Itinerary • Fully Interactive Experience</p>
+        <p>London Toddler Activities Itinerary &bull; Fully Interactive Experience</p>
       </footer>
-      
-      {/* Hide scrollbar utility for the category filters */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}} />
     </div>
   );
 }
