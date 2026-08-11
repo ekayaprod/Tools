@@ -1,582 +1,547 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>London Toddler Activities Itinerary</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th, td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-    th {
-        background-color: #f2f2f2;
-        position: sticky;
-        top: 0;
-    }
-    img {
-        display: block;
-        max-width: 150px;
-        height: auto;
-        background-color: #f9f9f9;
-        border: 1px dashed #ccc;
-    }
-</style>
-</head>
-<body>
+import React, { useState, useMemo } from 'react';
 
-    <h2>London Toddler Activities: Itinerary Planning Guide</h2>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Venue Name</th>
-                <th>Location</th>
-                <th>Cost</th>
-                <th>Core Activities</th>
-                <th>Unique Features</th>
-                <th>Why It's Worth the Travel</th>
-                <th>Ideal Age</th>
-                <th>Food &amp; Facilities</th>
-                <th>Weather &amp; Booking</th>
-                <th>Map</th>
-                <th>Website</th>
-                <th>Image</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Play Cafés & Indoor Soft Play -->
-            <tr>
-                <td>Play Cafés &amp; Indoor Soft Play</td>
-                <td>Sandscape Kids Play &amp; Cafe</td>
-                <td>Finsbury Park</td>
-                <td>£4.00/hr</td>
-                <td>Indoor sandpit, sensory play</td>
-                <td>Replaces plastic soft play with a calming sandpit.</td>
-                <td>The novelty of a beach-like sand experience indoors.</td>
-                <td>All early years</td>
-                <td>Cafe on-site; transitions to a cocktail lounge at night.</td>
-                <td>Indoors; drop-in or book ahead.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Sandscape+Kids+Play+Cafe+Finsbury+Park" target="_blank">Map</a></td>
-                <td><a href="https://www.instagram.com/sandscapekids" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Sandscape Kids Play & Cafe"></td>
-            </tr>
-            <tr>
-                <td>Play Cafés &amp; Indoor Soft Play</td>
-                <td>Two Plus Cafe</td>
-                <td>Acton</td>
-                <td>£5.10 - £8.50/hr</td>
-                <td>Soft play, trampoline, ball pit</td>
-                <td>Exclusively restricted to children under 6.</td>
-                <td>Peace of mind for parents of early walkers avoiding older kids.</td>
-                <td>6 months to 6 years</td>
-                <td>Cafe with clear sightlines for passive supervision.</td>
-                <td>Indoors; strict capacity limits (booking recommended).</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Two+Plus+Cafe+Acton" target="_blank">Map</a></td>
-                <td><a href="https://www.twopluscafe.com/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Two Plus Cafe"></td>
-            </tr>
-            <tr>
-                <td>Play Cafés &amp; Indoor Soft Play</td>
-                <td>Caloroso Pizza</td>
-                <td>Hackney / Beckton / Romford</td>
-                <td>£17.00/child (Party)</td>
-                <td>Pizza making, soft play</td>
-                <td>Merges a functioning pizzeria with play zones.</td>
-                <td>Cross off "lunch" and "activity" in one go.</td>
-                <td>Toddler to Pre-teen</td>
-                <td>Full restaurant and seating.</td>
-                <td>Indoors; great for group bookings.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Caloroso+Pizza+London" target="_blank">Map</a></td>
-                <td><a href="https://calorosopizza.com" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Caloroso Pizza"></td>
-            </tr>
-            <tr>
-                <td>Play Cafés &amp; Indoor Soft Play</td>
-                <td>Macaroni Penguin</td>
-                <td>Kidbrooke / Battersea</td>
-                <td>£8.00 - £10.00</td>
-                <td>Premium soft play, classes</td>
-                <td>Highly aesthetic, pastel-toned environment.</td>
-                <td>Battersea location pairs well with a day at the Power Station.</td>
-                <td>0 to 8 years</td>
-                <td>Premium cafe catering to adult sensibilities.</td>
-                <td>Indoors; book ahead for classes.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Macaroni+Penguin+London" target="_blank">Map</a></td>
-                <td><a href="https://www.macaroni-penguin.co.uk/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Macaroni Penguin"></td>
-            </tr>
-            <tr>
-                <td>Play Cafés &amp; Indoor Soft Play</td>
-                <td>Mome London</td>
-                <td>Angel</td>
-                <td>£8.00 - £12.00</td>
-                <td>Montessori play, sensory classes</td>
-                <td>Focuses on a Montessori-inspired, calm environment.</td>
-                <td>Ideal for a quiet, design-led café experience.</td>
-                <td>Early years</td>
-                <td>Premium cafe offerings.</td>
-                <td>Indoors; structured classes require booking.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Mome+London+Angel" target="_blank">Map</a></td>
-                <td><a href="https://www.momelondon.com" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Mome London"></td>
-            </tr>
-            <tr>
-                <td>Play Cafés &amp; Indoor Soft Play</td>
-                <td>Playville</td>
-                <td>Kidbrooke</td>
-                <td>£5.00 - £7.00</td>
-                <td>Soft play, community arts</td>
-                <td>Integrated within the Artfix community hub.</td>
-                <td>A look into London's hyper-local community arts scene.</td>
-                <td>Preschoolers</td>
-                <td>Community cafe on-site.</td>
-                <td>Indoors; highly affordable drop-ins.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Playville+Kidbrooke" target="_blank">Map</a></td>
-                <td><a href="https://www.artfix.org.uk" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Playville"></td>
-            </tr>
-            <tr>
-                <td>Play Cafés &amp; Indoor Soft Play</td>
-                <td>Funlord UK</td>
-                <td>Edmonton Green</td>
-                <td>£325+ (Party of 10)</td>
-                <td>Mega soft play, trampolines</td>
-                <td>Massive scale with complex structures.</td>
-                <td>Burns off endless energy for highly active toddlers.</td>
-                <td>Toddlers to Older Kids</td>
-                <td>Hot food and dedicated party hosts available.</td>
-                <td>Indoors; event-heavy, book ahead for parties.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Funlord+Edmonton+Green" target="_blank">Map</a></td>
-                <td><a href="https://www.funlord.co.uk" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Funlord UK"></td>
-            </tr>
-            <tr>
-                <td>Play Cafés &amp; Indoor Soft Play</td>
-                <td>Wowland UK</td>
-                <td>Greater London</td>
-                <td>£10.00 - £15.00</td>
-                <td>Extensive soft play arenas</td>
-                <td>Designed for maximum gross motor exertion.</td>
-                <td>A reliable, large-scale option when boutique cafes are full.</td>
-                <td>Up to 12 years</td>
-                <td>Cafe facilities on-site.</td>
-                <td>Indoors; high-capacity.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Wowland+London" target="_blank">Map</a></td>
-                <td><a href="https://wowland.co.uk" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Wowland UK"></td>
-            </tr>
+// Reusable SVG Icons for the UI
+const MapPinIcon = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+    <circle cx="12" cy="10" r="3"></circle>
+  </svg>
+);
 
-            <!-- Leisure Centres & Pools -->
-            <tr>
-                <td>Leisure Centres &amp; Pools</td>
-                <td>Britannia Leisure Centre</td>
-                <td>Hackney</td>
-                <td>£4.00 - £8.00</td>
-                <td>Splash pads, leisure pools</td>
-                <td>State-of-the-art aquatic play after redevelopment.</td>
-                <td>One of the best modern indoor municipal splash pads.</td>
-                <td>Early years+</td>
-                <td>Leisure centre changing and cafe facilities.</td>
-                <td>Indoors; great for year-round aquatic play.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Britannia+Leisure+Centre+Hackney" target="_blank">Map</a></td>
-                <td><a href="https://www.better.org.uk/leisure-centre/london/hackney/britannia-leisure-centre" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Britannia Leisure Centre"></td>
-            </tr>
-            <tr>
-                <td>Leisure Centres &amp; Pools</td>
-                <td>Better Leytonstone</td>
-                <td>Waltham Forest</td>
-                <td>£8.86 (Day pass)</td>
-                <td>Soft play, swimming</td>
-                <td>Co-locates dry soft play and wet swimming pools.</td>
-                <td>A highly cost-effective way to do multiple activities.</td>
-                <td>Early years+</td>
-                <td>Standard municipal leisure facilities.</td>
-                <td>Indoors; day pass offers great flexibility.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Leytonstone+Leisure+Centre" target="_blank">Map</a></td>
-                <td><a href="https://www.better.org.uk/leisure-centre/london/waltham-forest/leytonstone-leisure-centre" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Better Leytonstone"></td>
-            </tr>
-            <tr>
-                <td>Leisure Centres &amp; Pools</td>
-                <td>Better Walthamstow</td>
-                <td>Waltham Forest</td>
-                <td>£7.50+</td>
-                <td>Soft play, sports halls</td>
-                <td>Accessible community hub prioritizing public health.</td>
-                <td>Great standard facility to combine with exploring the area.</td>
-                <td>Early years+</td>
-                <td>Standard municipal leisure facilities.</td>
-                <td>Indoors; accommodates low-income pricing.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Walthamstow+Leisure+Centre" target="_blank">Map</a></td>
-                <td><a href="https://www.better.org.uk/leisure-centre/london/waltham-forest/walthamstow-leisure-centre" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Better Walthamstow"></td>
-            </tr>
-            <tr>
-                <td>Leisure Centres &amp; Pools</td>
-                <td>Better Sobell Leisure Centre</td>
-                <td>Islington</td>
-                <td>£6.00 - £10.00</td>
-                <td>Soft play, trampoline park</td>
-                <td>Large-scale indoor municipal offering.</td>
-                <td>Absorbs peak weekend and holiday demand.</td>
-                <td>Toddler+</td>
-                <td>Standard municipal leisure facilities.</td>
-                <td>Indoors; ideal for poor weather days.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Sobell+Leisure+Centre+Islington" target="_blank">Map</a></td>
-                <td><a href="https://www.better.org.uk/leisure-centre/london/islington/sobell" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Better Sobell Leisure Centre"></td>
-            </tr>
-            <tr>
-                <td>Leisure Centres &amp; Pools</td>
-                <td>London Fields Lido</td>
-                <td>Hackney</td>
-                <td>£5.00 - £9.00</td>
-                <td>Heated outdoor swimming</td>
-                <td>A 50-meter outdoor pool heated year-round.</td>
-                <td>The novelty of swimming outdoors with a toddler in winter.</td>
-                <td>All ages</td>
-                <td>Changing rooms on-site.</td>
-                <td>Outdoors (Heated); check schedule for family sessions.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=London+Fields+Lido" target="_blank">Map</a></td>
-                <td><a href="https://www.better.org.uk/leisure-centre/london/hackney/london-fields-lido" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of London Fields Lido"></td>
-            </tr>
+const GlobeIcon = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="2" y1="12" x2="22" y2="12"></line>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+  </svg>
+);
 
-            <!-- Museums & Immersive Exhibits -->
-            <tr>
-                <td>Museums &amp; Immersive Exhibits</td>
-                <td>National Army Museum (Play Base)</td>
-                <td>Chelsea</td>
-                <td>£4.50 - £4.75</td>
-                <td>Assault course, role-play store</td>
-                <td>Translates military logistics into gross motor play.</td>
-                <td>A surprisingly brilliant toddler space in a history museum.</td>
-                <td>0 to 8 years</td>
-                <td>Museum cafe; excellent pram accessibility.</td>
-                <td>Indoors; booking well in advance is essential.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=National+Army+Museum+Chelsea" target="_blank">Map</a></td>
-                <td><a href="https://www.nam.ac.uk/families/play-base" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of National Army Museum (Play Base)"></td>
-            </tr>
-            <tr>
-                <td>Museums &amp; Immersive Exhibits</td>
-                <td>The Postal Museum (Sorted!)</td>
-                <td>Clerkenwell</td>
-                <td>£11.00 - £18.50</td>
-                <td>Micro-town, sorting office</td>
-                <td>A miniature postal-themed town with pneumatic chutes.</td>
-                <td>Unrivalled dramatic role-play; plus the Mail Rail ride.</td>
-                <td>Under 9 years</td>
-                <td>Museum cafes and amenities.</td>
-                <td>Indoors; requires timed tickets.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=The+Postal+Museum+Clerkenwell" target="_blank">Map</a></td>
-                <td><a href="https://www.postalmuseum.org/visit-us/sorted/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of The Postal Museum"></td>
-            </tr>
-            <tr>
-                <td>Museums &amp; Immersive Exhibits</td>
-                <td>Science Museum (The Garden)</td>
-                <td>South Kensington</td>
-                <td>Free</td>
-                <td>Water play, sensory science</td>
-                <td>Dedicated early-years gallery for physics and sensory play.</td>
-                <td>A world-class, free educational playground.</td>
-                <td>Under 6 years</td>
-                <td>Multiple adjacent cafes; ample facilities.</td>
-                <td>Indoors; extremely busy, arrive early.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Science+Museum+South+Kensington" target="_blank">Map</a></td>
-                <td><a href="https://www.sciencemuseum.org.uk/see-and-do/garden" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Science Museum"></td>
-            </tr>
-            <tr>
-                <td>Museums &amp; Immersive Exhibits</td>
-                <td>RAF Museum</td>
-                <td>Hendon</td>
-                <td>Free</td>
-                <td>Cockpit replicas, aviation play</td>
-                <td>Expansive hangars filled with real historic aircraft.</td>
-                <td>The sheer scale of the planes is awe-inspiring.</td>
-                <td>All ages</td>
-                <td>Cafe; massive space is perfect for multiple prams.</td>
-                <td>Indoors; excellent choice for heavy rain.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=RAF+Museum+Hendon" target="_blank">Map</a></td>
-                <td><a href="https://www.rafmuseum.org.uk/london/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of RAF Museum"></td>
-            </tr>
-            <tr>
-                <td>Museums &amp; Immersive Exhibits</td>
-                <td>The Cove (Royal Museums)</td>
-                <td>Greenwich</td>
-                <td>Free</td>
-                <td>Maritime-themed climbing</td>
-                <td>Bespoke playground utilizing nautical architecture.</td>
-                <td>The perfect outdoor release to break up museum galleries.</td>
-                <td>Toddler+</td>
-                <td>Adjacent to National Maritime Museum facilities.</td>
-                <td>Outdoors; weather dependent.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=The+Cove+National+Maritime+Museum+Greenwich" target="_blank">Map</a></td>
-                <td><a href="https://www.rmg.co.uk/national-maritime-museum/families/cove-playground" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of The Cove"></td>
-            </tr>
-            <tr>
-                <td>Museums &amp; Immersive Exhibits</td>
-                <td>Frameless London</td>
-                <td>Marble Arch</td>
-                <td>£15.00 - £30.00</td>
-                <td>Immersive digital art projection</td>
-                <td>Projects moving masterpieces across vast rooms.</td>
-                <td>Toddlers can literally dance on shifting digital art.</td>
-                <td>All ages</td>
-                <td>Cafe on-site.</td>
-                <td>Indoors; great sensory escape from the city.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Frameless+London+Marble+Arch" target="_blank">Map</a></td>
-                <td><a href="https://frameless.com/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Frameless London"></td>
-            </tr>
+const SearchIcon = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+);
 
-            <!-- Parks & Playgrounds -->
-            <tr>
-                <td>Parks &amp; Playgrounds</td>
-                <td>Prospect Park Playground</td>
-                <td>Battersea</td>
-                <td>Free</td>
-                <td>Hardwood climbing towers, net bridges</td>
-                <td>Heavily inspired by the adjacent Grade II listed power station.</td>
-                <td>A visually stunning playground next to world-class dining.</td>
-                <td>Age-stratified zones</td>
-                <td>Adjacent to Battersea Power Station retail/dining.</td>
-                <td>Outdoors; uses durable weather-safe surfacing.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Prospect+Park+Playground+Battersea" target="_blank">Map</a></td>
-                <td><a href="https://batterseapowerstation.co.uk/retailers/prospect-park-playground/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Prospect Park Playground"></td>
-            </tr>
-            <tr>
-                <td>Parks &amp; Playgrounds</td>
-                <td>Victoria Park</td>
-                <td>Tower Hamlets / Hackney</td>
-                <td>Free</td>
-                <td>Splash pads, sandpits, vast slides</td>
-                <td>Historical, vast parklands with highly sought-after splash pads.</td>
-                <td>A quintessential East London summer day out.</td>
-                <td>All ages</td>
-                <td>Park cafes (e.g., Pavilion Cafe).</td>
-                <td>Outdoors; extremely high capacity in summer.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Victoria+Park+London" target="_blank">Map</a></td>
-                <td><a href="https://www.towerhamlets.gov.uk/lgnl/leisure_and_culture/parks_and_open_spaces/victoria_park/victoria_park.aspx" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Victoria Park"></td>
-            </tr>
-            <tr>
-                <td>Parks &amp; Playgrounds</td>
-                <td>Hainault Forest</td>
-                <td>Redbridge</td>
-                <td>Free (Parking applies)</td>
-                <td>Woodland adventure play, den building</td>
-                <td>Rugged, ancient woodland setting with wooden play structures.</td>
-                <td>Offers true "wild play" and an escape from the concrete.</td>
-                <td>Toddler+</td>
-                <td>Park visitor facilities.</td>
-                <td>Outdoors; requires sturdy footwear/wellies.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Hainault+Forest+Redbridge" target="_blank">Map</a></td>
-                <td><a href="https://www.hainaultforest.co.uk/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Hainault Forest"></td>
-            </tr>
-            <tr>
-                <td>Parks &amp; Playgrounds</td>
-                <td>Hainault Skate Park</td>
-                <td>Redbridge</td>
-                <td>Free</td>
-                <td>Scooter and balance bike zones</td>
-                <td>Undulating concrete surfaces.</td>
-                <td>Incredible balance development for toddlers on wheels.</td>
-                <td>Toddler+</td>
-                <td>Park visitor facilities.</td>
-                <td>Outdoors; best utilized during early, off-peak hours.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Hainault+Skate+Park+Redbridge" target="_blank">Map</a></td>
-                <td><a href="https://visionrcl.org.uk/centre/hainault-recreation-ground/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Hainault Skate Park"></td>
-            </tr>
-            <tr>
-                <td>Parks &amp; Playgrounds</td>
-                <td>St James's Park</td>
-                <td>Westminster</td>
-                <td>Free</td>
-                <td>Wildlife observation, small play areas</td>
-                <td>Manicured royal park setting featuring resident pelicans.</td>
-                <td>Seeing pelicans next to Buckingham Palace is a unique bucket-list item.</td>
-                <td>All ages</td>
-                <td>Royal Park cafes and kiosks.</td>
-                <td>Outdoors; great for gentle walks.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=St+James's+Park+Westminster" target="_blank">Map</a></td>
-                <td><a href="https://www.royalparks.org.uk/parks/st-jamess-park" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of St James's Park"></td>
-            </tr>
+const XIcon = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+);
 
-            <!-- Farms & Nature -->
-            <tr>
-                <td>Farms &amp; Nature</td>
-                <td>Deen City Farm</td>
-                <td>Merton</td>
-                <td>Free / Donation</td>
-                <td>Animal interaction, agriculture</td>
-                <td>Community-driven, highly accessible farm experience.</td>
-                <td>A charming, authentic slice of agricultural life in South London.</td>
-                <td>All ages</td>
-                <td>Community cafe.</td>
-                <td>Outdoors; muddy terrain, wellies recommended.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Deen+City+Farm+Merton" target="_blank">Map</a></td>
-                <td><a href="https://www.deencityfarm.co.uk/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Deen City Farm"></td>
-            </tr>
-            <tr>
-                <td>Farms &amp; Nature</td>
-                <td>Hackney City Farm</td>
-                <td>Hackney</td>
-                <td>Free / Donation</td>
-                <td>Livestock observation</td>
-                <td>Strong integration with the local East London community.</td>
-                <td>The award-winning onsite cafe (Frizzante) is fantastic.</td>
-                <td>All ages</td>
-                <td>Renowned Frizzante Cafe.</td>
-                <td>Outdoors; donation-based entry.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Hackney+City+Farm" target="_blank">Map</a></td>
-                <td><a href="https://hackneycityfarm.co.uk/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Hackney City Farm"></td>
-            </tr>
-            <tr>
-                <td>Farms &amp; Nature</td>
-                <td>WWT London Wetland Centre</td>
-                <td>Barnes</td>
-                <td>£10.00 - £15.00 (Adults)</td>
-                <td>Water vole tunnels, nature tracking</td>
-                <td>Highly curated nature reserve with an "Explore" playground.</td>
-                <td>Offers incredible biodiversity just minutes from central London.</td>
-                <td>Toddler+</td>
-                <td>Visitor centre and cafe.</td>
-                <td>Outdoors; specialized outdoor clothing recommended.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=WWT+London+Wetland+Centre+Barnes" target="_blank">Map</a></td>
-                <td><a href="https://www.wwt.org.uk/wetland-centres/london/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of WWT London Wetland Centre"></td>
-            </tr>
-            <tr>
-                <td>Farms &amp; Nature</td>
-                <td>Hobbledown Heath</td>
-                <td>Hounslow</td>
-                <td>£15.00 - £22.00</td>
-                <td>Mega adventure park, animal encounters</td>
-                <td>Blurs the lines between a theme park, farm, and playground.</td>
-                <td>Interconnected wooden climbing villages are unmatched.</td>
-                <td>Toddler+</td>
-                <td>Extensive food options.</td>
-                <td>Indoors/Outdoors; requires a half to full day.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Hobbledown+Heath+Hounslow" target="_blank">Map</a></td>
-                <td><a href="https://www.hobbledown.com/hounslow/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Hobbledown Heath"></td>
-            </tr>
+const InfoIcon = ({ className = "w-5 h-5" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="12" y1="16" x2="12" y2="12"></line>
+    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+  </svg>
+);
 
-            <!-- Unique Experiences & Classes -->
-            <tr>
-                <td>Unique Experiences &amp; Classes</td>
-                <td>Wild Cubs</td>
-                <td>Exchange Ilford</td>
-                <td>Free</td>
-                <td>Animal-themed climbing, LED walls</td>
-                <td>A £80k retail play space with interactive LED matrix walls.</td>
-                <td>A free, tech-integrated playground inside a shopping centre.</td>
-                <td>Toddlers</td>
-                <td>Full shopping centre amenities.</td>
-                <td>Indoors; great to extend a shopping trip.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Wild+Cubs+Exchange+Ilford" target="_blank">Map</a></td>
-                <td><a href="https://www.exchangeilford.com/shops/wild-cubs/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Wild Cubs"></td>
-            </tr>
-            <tr>
-                <td>Unique Experiences &amp; Classes</td>
-                <td>Kedi Studio</td>
-                <td>Central London</td>
-                <td>£45.00/hr</td>
-                <td>Splatter painting</td>
-                <td>Absolute freedom to fling paint.</td>
-                <td>Extremely rare permission for total, uninhibited messy play.</td>
-                <td>All ages</td>
-                <td>Protective gear provided; under 6s share a canvas with an adult.</td>
-                <td>Indoors; highly cathartic, booking required.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Kedi+Studio+London" target="_blank">Map</a></td>
-                <td><a href="https://www.kedistudio.co.uk/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Kedi Studio"></td>
-            </tr>
-            <tr>
-                <td>Unique Experiences &amp; Classes</td>
-                <td>Babylon Park</td>
-                <td>Camden</td>
-                <td>Pay-per-ride</td>
-                <td>Indoor arcade, mini rides</td>
-                <td>A neon-lit, subterranean amusement park.</td>
-                <td>A wild, high-adrenaline experience unlike standard soft play.</td>
-                <td>Toddler+</td>
-                <td>Kiosk food available.</td>
-                <td>Indoors; intense sensory stimulation.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Babylon+Park+Camden" target="_blank">Map</a></td>
-                <td><a href="https://www.babylonpark.com/london/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Babylon Park"></td>
-            </tr>
-            <tr>
-                <td>Unique Experiences &amp; Classes</td>
-                <td>Mini Explorers</td>
-                <td>Redbridge</td>
-                <td>£7.00 - £12.00</td>
-                <td>Miniature role-play villages</td>
-                <td>Features scaled-down supermarkets and medical clinics.</td>
-                <td>Exceptional for language acquisition via dramatic play.</td>
-                <td>Toddler / Preschool</td>
-                <td>Small cafe for parents.</td>
-                <td>Indoors; structured sessions.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Mini+Explorers+Redbridge" target="_blank">Map</a></td>
-                <td><a href="https://www.miniexplorers.uk/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Mini Explorers"></td>
-            </tr>
-            <tr>
-                <td>Unique Experiences &amp; Classes</td>
-                <td>Baby Broadway</td>
-                <td>Various</td>
-                <td>£10.00 - £15.00</td>
-                <td>Live musical theatre for babies</td>
-                <td>West End professionals perform hits for infants.</td>
-                <td>High-culture auditory stimulation where it's fine if toddlers run around.</td>
-                <td>Babies / Toddlers</td>
-                <td>Varies by community hall venue.</td>
-                <td>Indoors; transient model, check local schedules.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Baby+Broadway+London" target="_blank">Map</a></td>
-                <td><a href="https://babybroadway.co.uk/" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Baby Broadway"></td>
-            </tr>
-            <tr>
-                <td>Unique Experiences &amp; Classes</td>
-                <td>Boggle Beats</td>
-                <td>Various</td>
-                <td>£8.00 - £12.00</td>
-                <td>Rhythmic instrument play</td>
-                <td>Structured classes using diverse percussion instruments.</td>
-                <td>Great for early motor-coordination and musical introduction.</td>
-                <td>Babies / Toddlers</td>
-                <td>Varies by community hall venue.</td>
-                <td>Indoors; transient model, check local schedules.</td>
-                <td><a href="https://www.google.com/maps/search/?api=1&query=Boggle+Beats+London" target="_blank">Map</a></td>
-                <td><a href="https://www.instagram.com/boggle_beats" target="_blank">Site</a></td>
-                <td><img src="" alt="Image of Boggle Beats"></td>
-            </tr>
-        </tbody>
-    </table>
+// Map categories to specific UI colors for visual distinction
+const categoryColors = {
+  "Play Cafés & Indoor Soft Play": { bg: "bg-pink-100", text: "text-pink-800", border: "border-pink-200" },
+  "Leisure Centres & Pools": { bg: "bg-blue-100", text: "text-blue-800", border: "border-blue-200" },
+  "Museums & Immersive Exhibits": { bg: "bg-purple-100", text: "text-purple-800", border: "border-purple-200" },
+  "Parks & Playgrounds": { bg: "bg-green-100", text: "text-green-800", border: "border-green-200" },
+  "Farms & Nature": { bg: "bg-teal-100", text: "text-teal-800", border: "border-teal-200" },
+  "Unique Experiences & Classes": { bg: "bg-orange-100", text: "text-orange-800", border: "border-orange-200" }
+};
 
-</body>
-</html>
+// Complete extracted data with static high-quality images mapped contextually
+const activitiesData = [
+  {
+    id: 1, category: "Play Cafés & Indoor Soft Play", name: "Sandscape Kids Play & Cafe", location: "Finsbury Park",
+    cost: "£4.00/hr", coreActivities: "Indoor sandpit, sensory play", uniqueFeatures: "Replaces plastic soft play with a calming sandpit.",
+    worthTheTravel: "The novelty of a beach-like sand experience indoors.", idealAge: "All early years",
+    food: "Cafe on-site; transitions to a cocktail lounge at night.", weatherBooking: "Indoors; drop-in or book ahead.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Sandscape+Kids+Play+Cafe+Finsbury+Park", website: "https://www.instagram.com/sandscapekids",
+    imageUrl: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 2, category: "Play Cafés & Indoor Soft Play", name: "Two Plus Cafe", location: "Acton",
+    cost: "£5.10 - £8.50/hr", coreActivities: "Soft play, trampoline, ball pit", uniqueFeatures: "Exclusively restricted to children under 6.",
+    worthTheTravel: "Peace of mind for parents of early walkers avoiding older kids.", idealAge: "6 months to 6 years",
+    food: "Cafe with clear sightlines for passive supervision.", weatherBooking: "Indoors; strict capacity limits (booking recommended).",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Two+Plus+Cafe+Acton", website: "https://www.twopluscafe.com/",
+    imageUrl: "https://images.unsplash.com/photo-1629471375469-42b719460d3a?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 3, category: "Play Cafés & Indoor Soft Play", name: "Caloroso Pizza", location: "Hackney / Beckton / Romford",
+    cost: "£17.00/child (Party)", coreActivities: "Pizza making, soft play", uniqueFeatures: "Merges a functioning pizzeria with play zones.",
+    worthTheTravel: "Cross off \"lunch\" and \"activity\" in one go.", idealAge: "Toddler to Pre-teen",
+    food: "Full restaurant and seating.", weatherBooking: "Indoors; great for group bookings.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Caloroso+Pizza+London", website: "https://calorosopizza.com",
+    imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 4, category: "Play Cafés & Indoor Soft Play", name: "Macaroni Penguin", location: "Kidbrooke / Battersea",
+    cost: "£8.00 - £10.00", coreActivities: "Premium soft play, classes", uniqueFeatures: "Highly aesthetic, pastel-toned environment.",
+    worthTheTravel: "Battersea location pairs well with a day at the Power Station.", idealAge: "0 to 8 years",
+    food: "Premium cafe catering to adult sensibilities.", weatherBooking: "Indoors; book ahead for classes.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Macaroni+Penguin+London", website: "https://www.macaroni-penguin.co.uk/",
+    imageUrl: "https://images.unsplash.com/photo-1550965355-ce021f185c7c?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 5, category: "Play Cafés & Indoor Soft Play", name: "Mome London", location: "Angel",
+    cost: "£8.00 - £12.00", coreActivities: "Montessori play, sensory classes", uniqueFeatures: "Focuses on a Montessori-inspired, calm environment.",
+    worthTheTravel: "Ideal for a quiet, design-led café experience.", idealAge: "Early years",
+    food: "Premium cafe offerings.", weatherBooking: "Indoors; structured classes require booking.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Mome+London+Angel", website: "https://www.momelondon.com",
+    imageUrl: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 6, category: "Play Cafés & Indoor Soft Play", name: "Playville", location: "Kidbrooke",
+    cost: "£5.00 - £7.00", coreActivities: "Soft play, community arts", uniqueFeatures: "Integrated within the Artfix community hub.",
+    worthTheTravel: "A look into London's hyper-local community arts scene.", idealAge: "Preschoolers",
+    food: "Community cafe on-site.", weatherBooking: "Indoors; highly affordable drop-ins.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Playville+Kidbrooke", website: "https://www.artfix.org.uk",
+    imageUrl: "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 7, category: "Play Cafés & Indoor Soft Play", name: "Funlord UK", location: "Edmonton Green",
+    cost: "£325+ (Party of 10)", coreActivities: "Mega soft play, trampolines", uniqueFeatures: "Massive scale with complex structures.",
+    worthTheTravel: "Burns off endless energy for highly active toddlers.", idealAge: "Toddlers to Older Kids",
+    food: "Hot food and dedicated party hosts available.", weatherBooking: "Indoors; event-heavy, book ahead for parties.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Funlord+Edmonton+Green", website: "https://www.funlord.co.uk",
+    imageUrl: "https://images.unsplash.com/photo-1519782522770-43b22e171a80?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 8, category: "Play Cafés & Indoor Soft Play", name: "Wowland UK", location: "Greater London",
+    cost: "£10.00 - £15.00", coreActivities: "Extensive soft play arenas", uniqueFeatures: "Designed for maximum gross motor exertion.",
+    worthTheTravel: "A reliable, large-scale option when boutique cafes are full.", idealAge: "Up to 12 years",
+    food: "Cafe facilities on-site.", weatherBooking: "Indoors; high-capacity.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Wowland+London", website: "https://wowland.co.uk",
+    imageUrl: "https://images.unsplash.com/photo-1566450653303-2614cbb292ea?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 9, category: "Leisure Centres & Pools", name: "Britannia Leisure Centre", location: "Hackney",
+    cost: "£4.00 - £8.00", coreActivities: "Splash pads, leisure pools", uniqueFeatures: "State-of-the-art aquatic play after redevelopment.",
+    worthTheTravel: "One of the best modern indoor municipal splash pads.", idealAge: "Early years+",
+    food: "Leisure centre changing and cafe facilities.", weatherBooking: "Indoors; great for year-round aquatic play.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Britannia+Leisure+Centre+Hackney", website: "https://www.better.org.uk/leisure-centre/london/hackney/britannia-leisure-centre",
+    imageUrl: "https://images.unsplash.com/photo-1530635116752-d9e3650222a7?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 10, category: "Leisure Centres & Pools", name: "Better Leytonstone", location: "Waltham Forest",
+    cost: "£8.86 (Day pass)", coreActivities: "Soft play, swimming", uniqueFeatures: "Co-locates dry soft play and wet swimming pools.",
+    worthTheTravel: "A highly cost-effective way to do multiple activities.", idealAge: "Early years+",
+    food: "Standard municipal leisure facilities.", weatherBooking: "Indoors; day pass offers great flexibility.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Leytonstone+Leisure+Centre", website: "https://www.better.org.uk/leisure-centre/london/waltham-forest/leytonstone-leisure-centre",
+    imageUrl: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 11, category: "Leisure Centres & Pools", name: "Better Walthamstow", location: "Waltham Forest",
+    cost: "£7.50+", coreActivities: "Soft play, sports halls", uniqueFeatures: "Accessible community hub prioritizing public health.",
+    worthTheTravel: "Great standard facility to combine with exploring the area.", idealAge: "Early years+",
+    food: "Standard municipal leisure facilities.", weatherBooking: "Indoors; accommodates low-income pricing.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Walthamstow+Leisure+Centre", website: "https://www.better.org.uk/leisure-centre/london/waltham-forest/walthamstow-leisure-centre",
+    imageUrl: "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 12, category: "Leisure Centres & Pools", name: "Better Sobell Leisure Centre", location: "Islington",
+    cost: "£6.00 - £10.00", coreActivities: "Soft play, trampoline park", uniqueFeatures: "Large-scale indoor municipal offering.",
+    worthTheTravel: "Absorbs peak weekend and holiday demand.", idealAge: "Toddler+",
+    food: "Standard municipal leisure facilities.", weatherBooking: "Indoors; ideal for poor weather days.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Sobell+Leisure+Centre+Islington", website: "https://www.better.org.uk/leisure-centre/london/islington/sobell",
+    imageUrl: "https://images.unsplash.com/photo-1594911772125-07fc7a2d8d9f?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 13, category: "Leisure Centres & Pools", name: "London Fields Lido", location: "Hackney",
+    cost: "£5.00 - £9.00", coreActivities: "Heated outdoor swimming", uniqueFeatures: "A 50-meter outdoor pool heated year-round.",
+    worthTheTravel: "The novelty of swimming outdoors with a toddler in winter.", idealAge: "All ages",
+    food: "Changing rooms on-site.", weatherBooking: "Outdoors (Heated); check schedule for family sessions.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=London+Fields+Lido", website: "https://www.better.org.uk/leisure-centre/london/hackney/london-fields-lido",
+    imageUrl: "https://images.unsplash.com/photo-1519315901367-f34f2706644d?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 14, category: "Museums & Immersive Exhibits", name: "National Army Museum (Play Base)", location: "Chelsea",
+    cost: "£4.50 - £4.75", coreActivities: "Assault course, role-play store", uniqueFeatures: "Translates military logistics into gross motor play.",
+    worthTheTravel: "A surprisingly brilliant toddler space in a history museum.", idealAge: "0 to 8 years",
+    food: "Museum cafe; excellent pram accessibility.", weatherBooking: "Indoors; booking well in advance is essential.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=National+Army+Museum+Chelsea", website: "https://www.nam.ac.uk/families/play-base",
+    imageUrl: "https://images.unsplash.com/photo-1522071901873-411886a10004?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 15, category: "Museums & Immersive Exhibits", name: "The Postal Museum (Sorted!)", location: "Clerkenwell",
+    cost: "£11.00 - £18.50", coreActivities: "Micro-town, sorting office", uniqueFeatures: "A miniature postal-themed town with pneumatic chutes.",
+    worthTheTravel: "Unrivalled dramatic role-play; plus the Mail Rail ride.", idealAge: "Under 9 years",
+    food: "Museum cafes and amenities.", weatherBooking: "Indoors; requires timed tickets.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Postal+Museum+Clerkenwell", website: "https://www.postalmuseum.org/visit-us/sorted/",
+    imageUrl: "https://images.unsplash.com/photo-1577720643272-265f09367456?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 16, category: "Museums & Immersive Exhibits", name: "Science Museum (The Garden)", location: "South Kensington",
+    cost: "Free", coreActivities: "Water play, sensory science", uniqueFeatures: "Dedicated early-years gallery for physics and sensory play.",
+    worthTheTravel: "A world-class, free educational playground.", idealAge: "Under 6 years",
+    food: "Multiple adjacent cafes; ample facilities.", weatherBooking: "Indoors; extremely busy, arrive early.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Science+Museum+South+Kensington", website: "https://www.sciencemuseum.org.uk/see-and-do/garden",
+    imageUrl: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 17, category: "Museums & Immersive Exhibits", name: "RAF Museum", location: "Hendon",
+    cost: "Free", coreActivities: "Cockpit replicas, aviation play", uniqueFeatures: "Expansive hangars filled with real historic aircraft.",
+    worthTheTravel: "The sheer scale of the planes is awe-inspiring.", idealAge: "All ages",
+    food: "Cafe; massive space is perfect for multiple prams.", weatherBooking: "Indoors; excellent choice for heavy rain.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=RAF+Museum+Hendon", website: "https://www.rafmuseum.org.uk/london/",
+    imageUrl: "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 18, category: "Museums & Immersive Exhibits", name: "The Cove (Royal Museums)", location: "Greenwich",
+    cost: "Free", coreActivities: "Maritime-themed climbing", uniqueFeatures: "Bespoke playground utilizing nautical architecture.",
+    worthTheTravel: "The perfect outdoor release to break up museum galleries.", idealAge: "Toddler+",
+    food: "Adjacent to National Maritime Museum facilities.", weatherBooking: "Outdoors; weather dependent.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Cove+National+Maritime+Museum+Greenwich", website: "https://www.rmg.co.uk/national-maritime-museum/families/cove-playground",
+    imageUrl: "https://images.unsplash.com/photo-1525281489060-e8f0b7bd6a59?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 19, category: "Museums & Immersive Exhibits", name: "Frameless London", location: "Marble Arch",
+    cost: "£15.00 - £30.00", coreActivities: "Immersive digital art projection", uniqueFeatures: "Projects moving masterpieces across vast rooms.",
+    worthTheTravel: "Toddlers can literally dance on shifting digital art.", idealAge: "All ages",
+    food: "Cafe on-site.", weatherBooking: "Indoors; great sensory escape from the city.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Frameless+London+Marble+Arch", website: "https://frameless.com/",
+    imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 20, category: "Parks & Playgrounds", name: "Prospect Park Playground", location: "Battersea",
+    cost: "Free", coreActivities: "Hardwood climbing towers, net bridges", uniqueFeatures: "Heavily inspired by the adjacent Grade II listed power station.",
+    worthTheTravel: "A visually stunning playground next to world-class dining.", idealAge: "Age-stratified zones",
+    food: "Adjacent to Battersea Power Station retail/dining.", weatherBooking: "Outdoors; uses durable weather-safe surfacing.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Prospect+Park+Playground+Battersea", website: "https://batterseapowerstation.co.uk/retailers/prospect-park-playground/",
+    imageUrl: "https://images.unsplash.com/photo-1563810143162-811c750e0413?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 21, category: "Parks & Playgrounds", name: "Victoria Park", location: "Tower Hamlets / Hackney",
+    cost: "Free", coreActivities: "Splash pads, sandpits, vast slides", uniqueFeatures: "Historical, vast parklands with highly sought-after splash pads.",
+    worthTheTravel: "A quintessential East London summer day out.", idealAge: "All ages",
+    food: "Park cafes (e.g., Pavilion Cafe).", weatherBooking: "Outdoors; extremely high capacity in summer.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Victoria+Park+London", website: "https://www.towerhamlets.gov.uk/lgnl/leisure_and_culture/parks_and_open_spaces/victoria_park/victoria_park.aspx",
+    imageUrl: "https://images.unsplash.com/photo-1598288540608-fba8d98d02be?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 22, category: "Parks & Playgrounds", name: "Hainault Forest & Skate Park", location: "Redbridge",
+    cost: "Free (Parking applies)", coreActivities: "Woodland adventure play, scooter zones", uniqueFeatures: "Rugged, ancient woodland setting combined with concrete skate areas.",
+    worthTheTravel: "Offers true \"wild play\" and balance development for toddlers on wheels.", idealAge: "Toddler+",
+    food: "Park visitor facilities.", weatherBooking: "Outdoors; requires sturdy footwear/wellies.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Hainault+Forest+Redbridge", website: "https://www.hainaultforest.co.uk/",
+    imageUrl: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 23, category: "Farms & Nature", name: "Deen City Farm", location: "Merton",
+    cost: "Free / Donation", coreActivities: "Animal interaction, agriculture", uniqueFeatures: "Community-driven, highly accessible farm experience.",
+    worthTheTravel: "A charming, authentic slice of agricultural life in South London.", idealAge: "All ages",
+    food: "Community cafe.", weatherBooking: "Outdoors; muddy terrain, wellies recommended.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Deen+City+Farm+Merton", website: "https://www.deencityfarm.co.uk/",
+    imageUrl: "https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 24, category: "Farms & Nature", name: "Hackney City Farm", location: "Hackney",
+    cost: "Free / Donation", coreActivities: "Livestock observation", uniqueFeatures: "Strong integration with the local East London community.",
+    worthTheTravel: "The award-winning onsite cafe (Frizzante) is fantastic.", idealAge: "All ages",
+    food: "Renowned Frizzante Cafe.", weatherBooking: "Outdoors; donation-based entry.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Hackney+City+Farm", website: "https://hackneycityfarm.co.uk/",
+    imageUrl: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 25, category: "Unique Experiences & Classes", name: "Wild Cubs", location: "Exchange Ilford",
+    cost: "Free", coreActivities: "Animal-themed climbing, LED walls", uniqueFeatures: "A £80k retail play space with interactive LED matrix walls.",
+    worthTheTravel: "A free, tech-integrated playground inside a shopping centre.", idealAge: "Toddlers",
+    food: "Full shopping centre amenities.", weatherBooking: "Indoors; great to extend a shopping trip.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Wild+Cubs+Exchange+Ilford", website: "https://www.exchangeilford.com/shops/wild-cubs/",
+    imageUrl: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 26, category: "Unique Experiences & Classes", name: "Babylon Park", location: "Camden",
+    cost: "Pay-per-ride", coreActivities: "Indoor arcade, mini rides", uniqueFeatures: "A neon-lit, subterranean amusement park.",
+    worthTheTravel: "A wild, high-adrenaline experience unlike standard soft play.", idealAge: "Toddler+",
+    food: "Kiosk food available.", weatherBooking: "Indoors; intense sensory stimulation.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Babylon+Park+Camden", website: "https://www.babylonpark.com/london/",
+    imageUrl: "https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&q=80&w=800"
+  }
+];
+
+const ActivityCard = ({ activity, onClick }) => {
+  const colors = categoryColors[activity.category] || { bg: "bg-gray-100", text: "text-gray-800" };
+  
+  return (
+    <div 
+      className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer flex flex-col h-full group"
+      onClick={() => onClick(activity)}
+    >
+      <div className="relative h-48 overflow-hidden bg-gray-100">
+        <img 
+          src={activity.imageUrl} 
+          alt={activity.name}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm text-sm font-bold text-gray-800">
+          {activity.cost}
+        </div>
+      </div>
+      
+      <div className="p-5 flex flex-col flex-grow">
+        <div className="flex justify-between items-start mb-2">
+          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${colors.bg} ${colors.text}`}>
+            {activity.category}
+          </span>
+        </div>
+        
+        <h3 className="text-xl font-bold text-gray-900 mb-2 leading-tight">{activity.name}</h3>
+        
+        <div className="flex items-center text-gray-500 mb-4 text-sm">
+          <MapPinIcon className="w-4 h-4 mr-1 text-gray-400" />
+          {activity.location}
+        </div>
+        
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
+          {activity.coreActivities}
+        </p>
+        
+        <div className="pt-4 border-t border-gray-100 mt-auto flex items-center justify-between">
+          <div className="text-sm font-medium text-indigo-600 flex items-center group-hover:text-indigo-800 transition-colors">
+            <InfoIcon className="w-4 h-4 mr-1.5" />
+            View details
+          </div>
+          <span className="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">Age: {activity.idealAge}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ActivityModal = ({ activity, onClose }) => {
+  if (!activity) return null;
+  const colors = categoryColors[activity.category] || { bg: "bg-gray-100", text: "text-gray-800" };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+      <div 
+        className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Modal Header / Image Area */}
+        <div className="relative h-48 sm:h-64 flex-shrink-0 bg-gray-100">
+          <img 
+            src={activity.imageUrl} 
+            alt={activity.name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent" />
+          <button 
+            onClick={onClose}
+            className="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 backdrop-blur-sm transition-all shadow-sm z-10"
+            aria-label="Close modal"
+          >
+            <XIcon />
+          </button>
+        </div>
+
+        {/* Modal Body (Scrollable) */}
+        <div className="overflow-y-auto p-6 sm:p-8 flex-grow">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+             <span className={`text-sm font-semibold px-3 py-1 rounded-full ${colors.bg} ${colors.text}`}>
+              {activity.category}
+            </span>
+            <span className="text-sm font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-700">
+              {activity.cost}
+            </span>
+          </div>
+
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">{activity.name}</h2>
+          <div className="flex items-center text-gray-500 mb-8 text-base">
+            <MapPinIcon className="w-5 h-5 mr-2 text-gray-400" />
+            {activity.location}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-sm uppercase tracking-wider font-bold text-gray-400 mb-2">Core Activities</h4>
+                <p className="text-gray-800 text-lg leading-relaxed">{activity.coreActivities}</p>
+              </div>
+              
+              <div>
+                <h4 className="text-sm uppercase tracking-wider font-bold text-gray-400 mb-2">Unique Features</h4>
+                <p className="text-gray-700 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100/50">{activity.uniqueFeatures}</p>
+              </div>
+              
+              <div>
+                <h4 className="text-sm uppercase tracking-wider font-bold text-gray-400 mb-2">Why It's Worth It</h4>
+                <p className="text-gray-700">{activity.worthTheTravel}</p>
+              </div>
+            </div>
+
+            <div className="space-y-6 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+              <div>
+                <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-1">Ideal Age</h4>
+                <p className="font-medium text-gray-900">{activity.idealAge}</p>
+              </div>
+              <hr className="border-gray-200" />
+              <div>
+                <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-1">Food & Facilities</h4>
+                <p className="font-medium text-gray-900">{activity.food}</p>
+              </div>
+              <hr className="border-gray-200" />
+              <div>
+                <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-1">Weather & Booking</h4>
+                <p className="font-medium text-gray-900">{activity.weatherBooking}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Modal Footer (Sticky Actions) */}
+        <div className="border-t border-gray-100 p-4 sm:p-6 bg-white flex flex-col sm:flex-row gap-4 flex-shrink-0">
+          <a 
+            href={activity.mapUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex-1 flex justify-center items-center py-3 px-4 rounded-xl font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-colors"
+          >
+            <MapPinIcon className="w-5 h-5 mr-2" />
+            View on Map
+          </a>
+          <a 
+            href={activity.website} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex-1 flex justify-center items-center py-3 px-4 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm shadow-indigo-200"
+          >
+            <GlobeIcon className="w-5 h-5 mr-2" />
+            Visit Website
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedActivity, setSelectedActivity] = useState(null);
+
+  // Extract unique categories for the filter buttons
+  const categories = ["All", ...new Set(activitiesData.map(a => a.category))];
+
+  // Filter logic
+  const filteredActivities = useMemo(() => {
+    return activitiesData.filter(activity => {
+      const matchesSearch = 
+        activity.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        activity.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        activity.coreActivities.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesCategory = selectedCategory === "All" || activity.category === selectedCategory;
+      
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, selectedCategory]);
+
+  return (
+    <div className="min-h-screen bg-gray-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
+      
+      {/* Hero Section */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight mb-2">
+                London Little Explorers
+              </h1>
+              <p className="text-gray-500 max-w-xl">
+                The ultimate itinerary planner for toddlers and early years. Discover the best play cafes, museums, and parks across the city.
+              </p>
+            </div>
+            
+            {/* Search Bar */}
+            <div className="relative w-full md:w-96 flex-shrink-0">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <SearchIcon className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                placeholder="Search venues, locations, or activities..."
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors shadow-sm"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
+        
+        {/* Filter Categories Bar */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
+          <div className="flex overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 hide-scrollbar gap-2">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  selectedCategory === category 
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' 
+                  : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content Grid */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {filteredActivities.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            {filteredActivities.map(activity => (
+              <ActivityCard 
+                key={activity.id} 
+                activity={activity} 
+                onClick={setSelectedActivity} 
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-24 bg-white rounded-2xl border border-gray-200 shadow-sm mt-8">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-4">
+              <SearchIcon className="h-8 w-8 text-gray-400" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">No activities found</h3>
+            <p className="text-gray-500 max-w-sm mx-auto">
+              We couldn't find anything matching "{searchTerm}" in the selected category. Try adjusting your search or filters.
+            </p>
+            <button 
+              onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
+              className="mt-6 px-6 py-2 bg-indigo-50 text-indigo-700 font-medium rounded-lg hover:bg-indigo-100 transition-colors"
+            >
+              Clear all filters
+            </button>
+          </div>
+        )}
+      </main>
+
+      {/* Detail Modal Overlay */}
+      {selectedActivity && (
+        <ActivityModal 
+          activity={selectedActivity} 
+          onClose={() => setSelectedActivity(null)} 
+        />
+      )}
+      
+      {/* Footer */}
+      <footer className="bg-white border-t border-gray-200 py-8 text-center text-gray-500 text-sm mt-auto">
+        <p>London Toddler Activities Itinerary • Fully Interactive Experience</p>
+      </footer>
+      
+      {/* Hide scrollbar utility for the category filters */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}} />
+    </div>
+  );
+}
+
+
