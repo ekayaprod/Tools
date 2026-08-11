@@ -14,3 +14,7 @@
 - Converted structural `.hero-section` inline padding and border configurations into `.pc-hero-section`.
 - Abstracted spinner alignment logic out of raw HTML strings into `.pc-spinner-wrapper`.
 - Added canonical border variable usage (`var(--pc-border)`).
+## Palette+ Design Manifest: KidsLondon.html
+* **Structural Fix:** Wrapped raw React JSX in valid HTML5 with React, ReactDOM, Babel, and Tailwind CSS CDNs to solve rendering failure.
+* **Modal Animation:** Injected `@keyframes` (`fade-in`, `slide-up`) to choreograph a premium, fluid entrance for the ActivityModal.
+* **Accessibility & Interactions:** Refactored `ActivityCard` from a rigid `div` to a semantic `button type="button"`. Enhanced all interactive elements (close buttons, filter buttons, links) with `focus-visible:ring-2`, fluid `ease-in-out` transitions, and `active:scale-95` scale transforms.

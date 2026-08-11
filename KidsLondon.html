@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>London Little Explorers</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <meta charset="UTF-8">
+  <title>London Little Explorers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fade-in 0.3s ease-out forwards; }
+    .animate-slide-up { animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  </style>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="text/babel">
+  <div id="root"></div>
+  <script type="text/babel">
 const { useState, useMemo } = React;
 
 // Reusable SVG Icons for the UI
@@ -278,11 +290,12 @@ const ActivityCard = ({ activity, onClick }) => {
   const colors = categoryColors[activity.category] || { bg: "bg-gray-100", text: "text-gray-800" };
   
   return (
-    <div 
-      className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer flex flex-col h-full group"
+    <button
+      type="button"
+      className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer flex flex-col h-full group text-left w-full focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none hover:-translate-y-1 ease-in-out"
       onClick={() => onClick(activity)}
     >
-      <div className="relative h-48 overflow-hidden bg-gray-100">
+      <div className="relative h-48 overflow-hidden bg-gray-100 w-full">
         <img 
           src={activity.imageUrl} 
           alt={activity.name}
@@ -312,7 +325,7 @@ const ActivityCard = ({ activity, onClick }) => {
           {activity.coreActivities}
         </p>
         
-        <div className="pt-4 border-t border-gray-100 mt-auto flex items-center justify-between">
+        <div className="pt-4 border-t border-gray-100 mt-auto flex items-center justify-between w-full">
           <div className="text-sm font-medium text-indigo-600 flex items-center group-hover:text-indigo-800 transition-colors">
             <InfoIcon className="w-4 h-4 mr-1.5" />
             View details
@@ -320,7 +333,7 @@ const ActivityCard = ({ activity, onClick }) => {
           <span className="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">Age: {activity.idealAge}</span>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
@@ -329,9 +342,9 @@ const ActivityModal = ({ activity, onClose }) => {
   const colors = categoryColors[activity.category] || { bg: "bg-gray-100", text: "text-gray-800" };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-sm animate-fade-in">
       <div 
-        className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col"
+        className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col animate-slide-up"
         onClick={e => e.stopPropagation()}
       >
         {/* Modal Header / Image Area */}
@@ -344,7 +357,7 @@ const ActivityModal = ({ activity, onClose }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent" />
           <button 
             onClick={onClose}
-            className="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 backdrop-blur-sm transition-all shadow-sm z-10"
+            className="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 backdrop-blur-sm transition-all shadow-sm z-10 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none duration-300 ease-in-out active:scale-95"
             aria-label="Close modal"
           >
             <XIcon />
@@ -411,7 +424,7 @@ const ActivityModal = ({ activity, onClose }) => {
             href={activity.mapUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 flex justify-center items-center py-3 px-4 rounded-xl font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-colors"
+            className="flex-1 flex justify-center items-center py-3 px-4 rounded-xl font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-colors duration-300 ease-in-out active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             <MapPinIcon className="w-5 h-5 mr-2" />
             View on Map
@@ -420,7 +433,7 @@ const ActivityModal = ({ activity, onClose }) => {
             href={activity.website} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 flex justify-center items-center py-3 px-4 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm shadow-indigo-200"
+            className="flex-1 flex justify-center items-center py-3 px-4 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm shadow-indigo-200 duration-300 ease-in-out active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             <GlobeIcon className="w-5 h-5 mr-2" />
             Visit Website
@@ -492,7 +505,7 @@ function App() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ease-in-out active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none ${
                   selectedCategory === category 
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' 
                   : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
@@ -528,7 +541,7 @@ function App() {
             </p>
             <button 
               onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
-              className="mt-6 px-6 py-2 bg-indigo-50 text-indigo-700 font-medium rounded-lg hover:bg-indigo-100 transition-colors"
+              className="mt-6 px-6 py-2 bg-indigo-50 text-indigo-700 font-medium rounded-lg hover:bg-indigo-100 transition-all duration-300 ease-in-out active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               Clear all filters
             </button>
@@ -558,3 +571,9 @@ root.render(<App />);
 </body>
 </html>
 
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
