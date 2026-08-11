@@ -288,7 +288,7 @@ const activitiesData = [
 
 const ActivityCard = ({ activity, onClick }) => {
   const colors = categoryColors[activity.category] || { bg: "bg-gray-100", text: "text-gray-800" };
-  
+
   return (
     <button
       type="button"
@@ -296,36 +296,35 @@ const ActivityCard = ({ activity, onClick }) => {
       onClick={() => onClick(activity)}
     >
       <div className="relative h-48 overflow-hidden bg-gray-100 w-full">
-        <img 
-          src={activity.imageUrl} 
+        <img
+          src={activity.imageUrl}
           alt={activity.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
-          decoding="async"
-          width="800"
-          height="800"
         />
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm text-sm font-bold text-gray-800">
           {activity.cost}
         </div>
       </div>
-      
+
       <div className="p-5 flex flex-col flex-grow">
-        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full inline-block mb-2 self-start ${colors.bg} ${colors.text}`}>
-          {activity.category}
-        </span>
-        
+        <div className="flex justify-between items-start mb-2">
+          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${colors.bg} ${colors.text}`}>
+            {activity.category}
+          </span>
+        </div>
+
         <h3 className="text-xl font-bold text-gray-900 mb-2 leading-tight">{activity.name}</h3>
-        
+
         <div className="flex items-center text-gray-500 mb-4 text-sm">
           <MapPinIcon className="w-4 h-4 mr-1 text-gray-400" />
           {activity.location}
         </div>
-        
+
         <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
           {activity.coreActivities}
         </p>
-        
+
         <div className="pt-4 border-t border-gray-100 mt-auto flex items-center justify-between w-full">
           <div className="text-sm font-medium text-indigo-600 flex items-center group-hover:text-indigo-800 transition-colors">
             <InfoIcon className="w-4 h-4 mr-1.5" />
@@ -344,23 +343,19 @@ const ActivityModal = ({ activity, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-sm animate-fade-in">
-      <div 
+      <div
         className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col animate-slide-up"
         onClick={e => e.stopPropagation()}
       >
         {/* Modal Header / Image Area */}
         <div className="relative h-48 sm:h-64 flex-shrink-0 bg-gray-100">
-          <img 
-            src={activity.imageUrl} 
+          <img
+            src={activity.imageUrl}
             alt={activity.name}
             className="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-            width="800"
-            height="800"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent" />
-          <button 
+          <button
             onClick={onClose}
             className="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 backdrop-blur-sm transition-all shadow-sm z-10 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none duration-300 ease-in-out active:scale-95"
             aria-label="Close modal"
@@ -392,12 +387,12 @@ const ActivityModal = ({ activity, onClose }) => {
                 <h4 className="text-sm uppercase tracking-wider font-bold text-gray-400 mb-2">Core Activities</h4>
                 <p className="text-gray-800 text-lg leading-relaxed">{activity.coreActivities}</p>
               </div>
-              
+
               <div>
                 <h4 className="text-sm uppercase tracking-wider font-bold text-gray-400 mb-2">Unique Features</h4>
                 <p className="text-gray-700 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100/50">{activity.uniqueFeatures}</p>
               </div>
-              
+
               <div>
                 <h4 className="text-sm uppercase tracking-wider font-bold text-gray-400 mb-2">Why It&apos;s Worth It</h4>
                 <p className="text-gray-700">{activity.worthTheTravel}</p>
@@ -425,18 +420,18 @@ const ActivityModal = ({ activity, onClose }) => {
 
         {/* Modal Footer (Sticky Actions) */}
         <div className="border-t border-gray-100 p-4 sm:p-6 bg-white flex flex-col sm:flex-row gap-4 flex-shrink-0">
-          <a 
-            href={activity.mapUrl} 
-            target="_blank" 
+          <a
+            href={activity.mapUrl}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex justify-center items-center py-3 px-4 rounded-xl font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-colors duration-300 ease-in-out active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             <MapPinIcon className="w-5 h-5 mr-2" />
             View on Map
           </a>
-          <a 
-            href={activity.website} 
-            target="_blank" 
+          <a
+            href={activity.website}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex justify-center items-center py-3 px-4 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm shadow-indigo-200 duration-300 ease-in-out active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
@@ -460,20 +455,20 @@ function App() {
   // Filter logic
   const filteredActivities = useMemo(() => {
     return activitiesData.filter(activity => {
-      const matchesSearch = 
+      const matchesSearch =
         activity.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.coreActivities.toLowerCase().includes(searchTerm.toLowerCase());
-      
+
       const matchesCategory = selectedCategory === "All" || activity.category === selectedCategory;
-      
+
       return matchesSearch && matchesCategory;
     });
   }, [searchTerm, selectedCategory]);
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-      
+
       {/* Hero Section */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
@@ -486,7 +481,7 @@ function App() {
                 The ultimate itinerary planner for toddlers and early years. Discover the best play cafes, museums, and parks across the city.
               </p>
             </div>
-            
+
             {/* Search Bar */}
             <div className="relative w-full md:w-96 flex-shrink-0">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -502,7 +497,7 @@ function App() {
             </div>
           </div>
         </div>
-        
+
         {/* Filter Categories Bar */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
           <div className="flex overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 gap-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
@@ -511,8 +506,8 @@ function App() {
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ease-in-out active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none ${
-                  selectedCategory === category 
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' 
+                  selectedCategory === category
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200'
                   : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
                 }`}
               >
@@ -528,10 +523,10 @@ function App() {
         {filteredActivities.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
             {filteredActivities.map(activity => (
-              <ActivityCard 
-                key={activity.id} 
-                activity={activity} 
-                onClick={setSelectedActivity} 
+              <ActivityCard
+                key={activity.id}
+                activity={activity}
+                onClick={setSelectedActivity}
               />
             ))}
           </div>
@@ -544,7 +539,7 @@ function App() {
             <p className="text-gray-500 max-w-sm mx-auto">
               We couldn&apos;t find anything matching &quot;{searchTerm}&quot; in the selected category. Try adjusting your search or filters.
             </p>
-            <button 
+            <button
               onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
               className="mt-6 px-6 py-2 bg-indigo-50 text-indigo-700 font-medium rounded-lg hover:bg-indigo-100 transition-all duration-300 ease-in-out active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none"
             >
@@ -556,12 +551,12 @@ function App() {
 
       {/* Detail Modal Overlay */}
       {selectedActivity && (
-        <ActivityModal 
-          activity={selectedActivity} 
-          onClose={() => setSelectedActivity(null)} 
+        <ActivityModal
+          activity={selectedActivity}
+          onClose={() => setSelectedActivity(null)}
         />
       )}
-      
+
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-8 text-center text-gray-500 text-sm mt-auto">
         <p>London Toddler Activities Itinerary &bull; Fully Interactive Experience</p>
@@ -573,5 +568,12 @@ function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
     </script>
+</body>
+</html>
+
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
 </html>
