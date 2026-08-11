@@ -149,6 +149,10 @@
 
                 /* Selecting Mode on Page */
                 .selecting-mode { cursor: crosshair !important; }
+
+                .dc-label-center { text-align: center; }
+                .dc-btn-cancel { margin-top: 0; }
+                .dc-success-text { font-size: 16px; margin-top: 10px; color: #4ade80; }
             </style>
             
             <div class="card">
@@ -181,9 +185,9 @@
 
                     <!-- Countdown Panel -->
                     <div id="p2" class="panel hd">
-                        <label style="text-align:center">Executing In</label>
+                        <label class="dc-label-center">Executing In</label>
                         <div id="cd" class="timer-display">00:00</div>
-                        <button id="cancel" aria-label="Cancel Timer" class="btn btn-secondary" style="margin-top:0">Cancel</button>
+                        <button id="cancel" aria-label="Cancel Timer" class="btn btn-secondary dc-btn-cancel">Cancel</button>
                     </div>
                 </div>
             </div>`;
@@ -326,7 +330,7 @@
             // Success Animation UI
             this.ui.timer.innerHTML = `
                 <div class="success-icon">✓</div>
-                <div style="font-size:16px; margin-top:10px; color:#4ade80">Action Executed</div>
+                <div class="dc-success-text">Action Executed</div>
             `;
 
             // Preserve 'DONE' text for tests to find in innerText, hidden visually if needed or just part of flow

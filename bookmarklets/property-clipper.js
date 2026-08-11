@@ -108,6 +108,13 @@
             .pc-grid-img { width: 100%; height: 80px; object-fit: cover; display: block; }
             .pc-grid-check { position: absolute; top: 4px; left: 4px; transform: scale(1.2); cursor: pointer; }
 
+            .pc-header-left { text-align: left; font-size: 16px; margin-bottom: 12px; }
+            .pc-hero-section { margin-bottom: 30px; border-radius: 8px; overflow: hidden; border: 1px solid var(--pc-border); }
+            .pc-hero-img { width: 100%; height: auto; max-height: 500px; object-fit: cover; display: block; }
+            .pc-spinner-wrapper { text-align: center; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+            .pc-spinner-custom { border-color: var(--pc-primary); border-top-color: transparent; }
+            .pc-status-text { font-weight: 500; }
+
             @media (prefers-reduced-motion: reduce) {
                 .pc-overlay, .pc-modal, .pc-spinner, .pc-btn { animation: none; transition: none; }
             }
@@ -475,8 +482,8 @@
             const heroUrl = data.heroUrl || (selectedPhotos.length > 0 ? selectedPhotos[0].url : null);
             if (heroUrl) {
                 heroHtml = `
-                <div class="hero-section" style="margin-bottom: 30px; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb;">
-                    <img src="${heroUrl}" alt="Primary view of ${BookmarkletUtils.escapeHtml(data.address)}" style="width: 100%; height: auto; max-height: 500px; object-fit: cover; display: block;">
+                <div class="hero-section pc-hero-section">
+                    <img src="${heroUrl}" alt="Primary view of ${BookmarkletUtils.escapeHtml(data.address)}" class="pc-hero-img">
                 </div>`;
             }
 
@@ -829,7 +836,7 @@
          */
         renderStart: () => {
             const container = document.getElementById(CONFIG.modalId);
-            container.innerHTML = `<h3 class="pc-header" style="text-align:left;font-size:16px;">Select Photos</h3>`;
+            container.innerHTML = `<h3 class="pc-header pc-header-left">Select Photos</h3>`;
             const total = Wizard.state.data.photoGroups.reduce((a, g) => a + g.photos.length, 0);
 
             const btnAll = buildElement(
@@ -872,7 +879,7 @@
             }
 
             const container = document.getElementById(CONFIG.modalId);
-            container.innerHTML = `<h3 class="pc-header" style="text-align:left;font-size:16px;margin-bottom:12px;">${grp.category} (${Wizard.state.step + 1}/${Wizard.state.data.photoGroups.length})</h3>`;
+            container.innerHTML = `<h3 class="pc-header pc-header-left">${grp.category} (${Wizard.state.step + 1}/${Wizard.state.data.photoGroups.length})</h3>`;
 
             const grid = buildElement('div', {}, '', container, { class: 'pc-grid' });
             const checks = [];
@@ -916,7 +923,7 @@
         generate: () => {
             const container = document.getElementById(CONFIG.modalId);
             container.innerHTML =
-                '<div style="text-align:center;padding:20px;display:flex;flex-direction:column;align-items:center;gap:15px;"><div class="pc-spinner" style="border-color:#2563eb;border-top-color:transparent;"></div><div id="pdf-status" style="font-weight:500;">Creating Report...</div></div>';
+                '<div class="pc-spinner-wrapper"><div class="pc-spinner pc-spinner-custom"></div><div id="pdf-status" class="pc-status-text">Creating Report...</div></div>';
 
             if (Wizard.state.format === 'pdf') {
                 PDFGenerator.create(

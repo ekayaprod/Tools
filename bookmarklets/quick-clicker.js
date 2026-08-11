@@ -69,20 +69,29 @@
                 '.pulse { animation: pulse 2s infinite; }' +
                 '.mode-switch{display:flex;gap:10px;margin-top:10px;font-size:11px;color:#94a3b8}' +
                 '.mode-opt{cursor:pointer;display:flex;align-items:center;gap:4px}' +
+                '.qc-close-btn{background:transparent;border:none;color:#e2e8f0;font-size:14px;cursor:pointer;padding:0;transition:color 0.2s;outline:none}' +
+                '.qc-close-btn:hover{color:#fff}' +
+                '.qc-close-btn:focus-visible{color:#3b82f6}' +
+                '.qc-label{font-size:11px;color:#94a3b8;margin-top:8px}' +
+                '.qc-checkbox-wrapper{margin-top:5px;display:flex;align-items:center;font-size:12px}' +
+                '.qc-checkbox{width:auto;margin-right:5px;margin-top:0}' +
+                '.qc-radio{width:auto}' +
+                '.qc-btn-danger{background:#ef4444}' +
+                '.qc-btn-danger:hover{background:#dc2626}' +
                 '</style>' +
                 '<div class="box">' +
-                '<div class="row" id="drag"><b>QUICK CLICKER V27</b><button id="x" aria-label="Close" style="background:transparent;border:none;color:#e2e8f0;font-size:14px;cursor:pointer;padding:0;">✕</button></div>' +
+                '<div class="row" id="drag"><b>QUICK CLICKER V27</b><button id="x" aria-label="Close" class="qc-close-btn">✕</button></div>' +
                 '<div id="v1" class="view">' +
                 '<button id="pk" aria-label="Select Target Element">🎯 Select Element</button>' +
                 '<div id="warn" class="hidden warn"></div>' +
                 '<div id="inp" class="hidden">' +
-                '<div style="font-size:11px;color:#94a3b8;margin-top:8px">Input Text</div>' +
+                '<div class="qc-label">Input Text</div>' +
                 '<input type="text" id="val">' +
-                '<div style="margin-top:5px"><input type="checkbox" id="ent" style="width:auto;margin-right:5px"> Press Enter</div>' +
+                '<div class="qc-checkbox-wrapper"><input type="checkbox" id="ent" class="qc-checkbox"> Press Enter</div>' +
                 '</div>' +
                 '<div class="mode-switch">' +
-                '<label class="mode-opt"><input type="radio" name="tm_mode" value="delay" checked style="width:auto"> Delay (Min)</label>' +
-                '<label class="mode-opt"><input type="radio" name="tm_mode" value="clock" style="width:auto"> Clock Time</label>' +
+                '<label class="mode-opt"><input type="radio" name="tm_mode" value="delay" checked class="qc-radio"> Delay (Min)</label>' +
+                '<label class="mode-opt"><input type="radio" name="tm_mode" value="clock" class="qc-radio"> Clock Time</label>' +
                 '</div>' +
                 '<div id="box_delay">' +
                 '<input type="number" id="mn" value="30" placeholder="Minutes">' +
@@ -94,7 +103,7 @@
                 '</div>' +
                 '<div id="v2" class="view hidden">' +
                 '<div class="timer" id="tm">00:00</div>' +
-                '<button id="cn" aria-label="Stop Quick Clicker" style="background:#ef4444">Stop</button>' +
+                '<button id="cn" aria-label="Stop Quick Clicker" class="qc-btn-danger">Stop</button>' +
                 '<div id="toast" class="toast hidden" role="alert" aria-live="assertive">No Sleep Active</div>' +
                 '</div>' +
                 '</div>';

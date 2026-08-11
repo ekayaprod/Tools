@@ -30,3 +30,6 @@
 ## 🛡️ Resilience & Security Boundaries ([Security / HARDEN])
 - [x] 🛡️ `mailto-link-generator/js/msgreader.js`: Bare catch blocks (`catch {`) discarding error context. Requires explicit error handling.
 - [x] 🛡️ `bookmarklets/property-clipper.js`: Bare catch blocks (`catch {`) discarding error context. Requires explicit error handling.
+- [x] 🎨 `bookmarklets/quick-clicker.js`: Extracted inline CSS styles and added tokenization.
+- [x] 🎨 `bookmarklets/delayed-clicker.js`: Extracted inline CSS styles and added tokenization.
+- [x] 🎨 `bookmarklets/property-clipper.js`: Extracted inline CSS styles and added tokenization.
