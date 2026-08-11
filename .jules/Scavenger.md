@@ -13,3 +13,5 @@
 **Targets Removed:**
 - `catch {` replaced with `catch (e) {` and error context logged in `bookmarklets/property-clipper.js`
 - `catch {` replaced with `catch (e) {` and error context logged in `mailto-link-generator/js/msgreader.js`
+
+Zero Targets — Clean Codebase
