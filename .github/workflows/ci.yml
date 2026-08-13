@@ -12,6 +12,12 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        task:
+          - 'npm run lint'
+          - 'node scripts/run_tests.js'
+          - 'npm run verify-links'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -25,8 +31,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm test
+      - name: Run task
+        run: ${{ matrix.task }}
 
   analyze:
     name: Analyze
