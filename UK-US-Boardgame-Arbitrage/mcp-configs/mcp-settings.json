@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "bgg-mcp": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "kkjdaniel/bgg-mcp:latest"],
+      "env": {
+        "BGG_API_KEY": "REPLACE_WITH_KEY"
+      }
+    },
+    "market-scraper": {
+      "command": "node",
+      "args": ["path/to/market-scraper/build/index.js"]
+    }
+  }
+}
