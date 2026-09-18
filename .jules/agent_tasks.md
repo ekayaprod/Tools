@@ -8,7 +8,6 @@
 ## The [INSTRUMENTER] Queue
 
 ## The [OPERATOR] Queue
-* [x] 📦 `package-lock.json`: [Recurring Entropy Escalation] Lockfile mismatch detected against package.json. Sync required.
 
 ## 🧱 Structural Monoliths ([Refactorer / UNKNOT])
 - [ ] 🏗️ `bookmarklets/pa-county-finder.js`: 1622 lines. Requires domain splitting and colocation.
@@ -19,17 +18,8 @@
 - [ ] 🏗️ `bookmarklets/web-clipper.js`: 689 lines. Requires domain splitting and colocation.
 
 ## 🎨 Rigid Presentation States ([UI / STYLIZE])
-- [x] 🎨 `bookmarklets/job-clipper.js`: Rigid inline CSS and hardcoded hex codes. Requires extraction to design tokens.
 - [ ] 🎨 `bookmarklets/pa-county-finder.js`: Hardcoded hex codes and rigid inline CSS styles within template literals. Requires UI modernization and tokenization.
-- [x] 🎨 `bookmarklets/macro-builder.js`: Extensive inline style attributes polluting structural HTML strings. Needs decoupled CSS classes.
 
 ## 🧹 Semantic Dust & Hygiene ([AST / REMOVE])
-- [x] 🧹 `bookmarklets/macro-builder.js`: Unreferenced diagnostic droppings and dynamic console wrappers. Requires excision.
-- [x] 🧹 `bookmarklets/utils.js`: Diagnostic droppings and console examples inside code. Requires excision or documentation cleanup.
 
 ## 🛡️ Resilience & Security Boundaries ([Security / HARDEN])
-- [x] 🛡️ `mailto-link-generator/js/msgreader.js`: Bare catch blocks (`catch {`) discarding error context. Requires explicit error handling.
-- [x] 🛡️ `bookmarklets/property-clipper.js`: Bare catch blocks (`catch {`) discarding error context. Requires explicit error handling.
-- [x] 🎨 `bookmarklets/quick-clicker.js`: Extracted inline CSS styles and added tokenization.
-- [x] 🎨 `bookmarklets/delayed-clicker.js`: Extracted inline CSS styles and added tokenization.
-- [x] 🎨 `bookmarklets/property-clipper.js`: Extracted inline CSS styles and added tokenization.
