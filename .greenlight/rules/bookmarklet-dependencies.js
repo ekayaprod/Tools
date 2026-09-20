@@ -46,17 +46,15 @@ if (violations.length > 0) {
     if (fs.existsSync(waiversPath)) {
         const waiversContent = fs.readFileSync(waiversPath, 'utf8');
         const lines = waiversContent.split('\n');
-        let currentFile = null;
         let currentRule = null;
         for (const line of lines) {
             if (line.trim().startsWith('- rule:')) {
                 currentRule = line.split(':')[1].trim();
             } else if (line.trim().startsWith('path:')) {
-                currentFile = line.split(':')[1].trim();
+                let currentFile = line.split(':')[1].trim();
                 if (currentRule && currentFile) {
                     waivers.push({ rule: currentRule, file: currentFile });
                     currentRule = null;
-                    currentFile = null;
                 }
             }
         }
