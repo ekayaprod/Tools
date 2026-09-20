@@ -1,0 +1,23 @@
+name: Greenlight Gate - Bookmarklet Dependencies
+
+on:
+  pull_request:
+    paths:
+      - "bookmarklets/**.js"
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: node .greenlight/rules/bookmarklet-dependencies.js
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: greenlight-report
+          path: .greenlight/report.json
