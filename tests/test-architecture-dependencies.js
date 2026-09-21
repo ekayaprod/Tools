@@ -8,15 +8,15 @@ const bookmarkletsDir = path.join(__dirname, '../bookmarklets');
 let targetFiles = [];
 
 try {
-    // Try to get changed JS files in the bookmarklets directory against origin/main.
-    // If that fails, get all files.
-    // We parse 'git status --porcelain' or diff as a last resort, but to reliably implement the Boy Scout Rule
-    // without failing the build unnecessarily, if we can't determine changed files, we fallback to all.
-    let diffCmd = 'git diff --name-only origin/main...HEAD 2>/dev/null || git diff --name-only main...HEAD 2>/dev/null || git diff --name-only HEAD~1 2>/dev/null';
+    // Determine changed files robustly. Use git ls-files if no PR target branch is easily known
+    // but the prompt strictly wants us to try Boy Scout Rule if possible.
+    // Since we're in a CI test runner, if this is a PR, we might have origin/main.
+    // We'll use a safer diff, and fallback to evaluating everything.
+    const diffCmd = 'git diff --name-only origin/main...HEAD 2>/dev/null || git diff --name-only main...HEAD 2>/dev/null || git diff --name-only HEAD~1 2>/dev/null';
     let output = '';
     try {
         output = execSync(diffCmd, { encoding: 'utf8' }).trim();
-    } catch (e) {
+    } catch {
         // If all diff commands fail, we don't have a reliable diff (e.g. shallow clone, no main branch).
     }
 
@@ -30,7 +30,7 @@ try {
         // Fallback: If no files changed, or shallow clone issue, evaluate all files
         targetFiles = fs.readdirSync(bookmarkletsDir).filter(f => f.endsWith('.js'));
     }
-} catch (e) {
+} catch {
     // Robust fallback: Evaluate all files in the directory
     targetFiles = fs.readdirSync(bookmarkletsDir).filter(f => f.endsWith('.js'));
 }
@@ -46,6 +46,8 @@ for (const file of targetFiles) {
 
     const content = fs.readFileSync(filePath, 'utf8');
 
+    // Abstract Syntax Tree parsing would be better, but regex/string matching is practical here
+    // for catching the specific block comment pattern.
     const usesBookmarkletUtils = content.includes('BookmarkletUtils');
     const hasRequire = content.includes('/** @require utils.js */');
 
