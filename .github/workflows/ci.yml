@@ -1,61 +1,67 @@
 name: CI
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    push:
+        branches: ['main']
+    pull_request:
+        branches: ['main']
 
 permissions:
-  contents: read
+    contents: read
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        task:
-          - 'npm run lint'
-          - 'node scripts/run_tests.js'
-          - 'npm run verify-links'
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
+    test:
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        strategy:
+            matrix:
+                task:
+                    - 'npm run lint'
+                    - 'node scripts/run_tests.js'
+                    - 'npm run verify-links'
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v7
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: '20'
-          cache: 'npm'
+            - name: Setup Node.js
+              uses: actions/setup-node@v7
+              with:
+                  node-version: '20'
+                  cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Run task
-        run: ${{ matrix.task }}
+            - name: Run task
+              run: ${{ matrix.task }}
 
-  analyze:
-    name: Analyze
-    runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'javascript' ]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
+    analyze:
+        name: Analyze
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        permissions:
+            actions: read
+            contents: read
+            security-events: write
+        strategy:
+            fail-fast: false
+            matrix:
+                language: ['javascript']
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v7
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v4.37.7
-        with:
-          languages: ${{ matrix.language }}
+            - name: Initialize CodeQL
+              uses: github/codeql-action/init@v4.37.7
+              with:
+                  languages: ${{ matrix.language }}
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v4.37.7
+            - name: Autobuild
+              uses: github/codeql-action/autobuild@v4.37.7
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v4.37.7
+            - name: Perform CodeQL Analysis
+              uses: github/codeql-action/analyze@v4.37.7
